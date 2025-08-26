@@ -1,7 +1,9 @@
 import React from 'react';
 import SectionContainer from "@/shared/components/containers/SectionContainer";
 import TextInput from "@/shared/components/inputs/TextInput";
-import {Search} from "@/shared/lib/assets/icons";
+
+import Search from "@public/icons/search.svg";
+
 const SearchBar: React.FC = () => {
   return (
     <SectionContainer className="h-16">

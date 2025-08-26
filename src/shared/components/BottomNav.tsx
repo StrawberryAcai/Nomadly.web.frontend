@@ -3,7 +3,12 @@ import React from "react";
 import {StaticImport} from "next/dist/shared/lib/get-img-props";
 import Link from "next/link";
 import Image from "next/image";
-import {Home, Explore, Tour, Community, Profile} from "@/shared/lib/assets/icons";
+
+import Home from "@public/icons/nav/home.svg";
+import Explore from "@public/icons/nav/explore.svg";
+import Tour from "@public/icons/nav/tour.svg";
+import Community from "@public/icons/nav/community.svg";
+import Profile from "@public/icons/nav/profile.svg";
 
 interface BottomNavIconProps {
   href: string;
