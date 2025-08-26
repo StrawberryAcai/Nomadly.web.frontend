@@ -32,7 +32,10 @@ body {
         @apply border-[var(--outline)];
     }
     .text-body-md {
-        @apply leading-[1.375rem] text-[0.9375rem];
+        @apply leading-[22px] text-[15px];
+    }
+    .text-body-lg {
+        @apply leading-[24px] text-[16px];
     }
     .text-white {
         @apply text-[#F5F5F5]
