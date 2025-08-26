@@ -13,8 +13,8 @@ interface BottomNavIconProps {
 
 const BottomNavIcon: React.FC<BottomNavIconProps> = ({href, src, alt}) => (
   <Link href={href} className="flex-1 flex flex-col items-center">
-    <Image src={src} alt={alt} className="h-6 w-6" />
-    <span className="text-body-md text-[#AAAAAA]">{alt}</span>
+    <Image src={src} alt={alt} height={24} width={24} />
+    <span className="text-body-md text-secondary">{alt}</span>
   </Link>
 )
 
