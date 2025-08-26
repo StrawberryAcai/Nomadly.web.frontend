@@ -14,7 +14,7 @@ interface BottomNavIconProps {
 const BottomNavIcon: React.FC<BottomNavIconProps> = ({href, src, alt}) => (
   <Link href={href} className="flex-1 flex flex-col items-center">
     <Image src={src} alt={alt} className="h-6 w-6" />
-    <span className="text-body-md">{alt}</span>
+    <span className="text-body-md text-[#AAAAAA]">{alt}</span>
   </Link>
 )
 
@@ -25,7 +25,7 @@ const BottomNav: React.FC = () => {
       <BottomNavIcon href="/explore" src={Explore} alt="지역체험" />
       <BottomNavIcon href="/tour" src={Tour} alt="관광" />
       <BottomNavIcon href="/community" src={Community} alt="커뮤니티" />
-      <BottomNavIcon href="/Profile" src={Profile} alt="마이" />
+      <BottomNavIcon href="/profile" src={Profile} alt="마이" />
     </nav>
   )
 }
