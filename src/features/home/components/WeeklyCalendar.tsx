@@ -15,7 +15,7 @@ const CalendarDay: React.FC<CalendarDayProps> = ({day, highlight}) => {
   return (
     <div className="flex-1 flex flex-col items-center relative">
       <span className={`text-body-md z-1 text-${highlight ? "white" :"secondary"}`}>{day.format("ddd")}</span>
-      {highlight && <span className="absolute top-0 right-1/2 translate-x-1/2 -translate-y-[0.1875rem] w-7 h-7 bg-primary rounded-full z-0" />}
+      {highlight && <span className="absolute top-0 right-1/2 translate-x-1/2 -translate-y-[0.225rem] w-7 h-7 bg-primary rounded-full z-0" />}
       <span className="text-body-md z-1">{day.format("D")}</span>
     </div>
   )
