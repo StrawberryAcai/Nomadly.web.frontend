@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${pretendard.variable} antialiased`}>
-        <main>{children}</main>
+        {children}
         <BottomNav />
       </body>
     </html>
