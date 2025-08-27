@@ -17,6 +17,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-pretendard), Arial, Helvetica, sans-serif;
   font-weight: 400;
+  overflow-x: hidden;
 }
 
 @layer utilities {
@@ -40,6 +41,9 @@ body {
     }
     .text-body-sm {
         @apply leading-[12px] text-[10px] font-[200];
+    }
+    .text-caption {
+        @apply leading-[16px] text-[12px];
     }
     .text-white {
         @apply text-[#F5F5F5];
