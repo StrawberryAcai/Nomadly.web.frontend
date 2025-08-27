@@ -25,9 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.variable} antialiased`}>
-        {children}
-        <BottomNav />
+      <body className={`${pretendard.variable} antialiased overflow-x-hidden`}>
+        <div className="min-h-[100dvh] flex flex-col"> {/* ✅ vh 대신 dvh 사용 */}
+          <main className="flex-1">{children}</main>
+          <BottomNav />
+        </div>
       </body>
     </html>
   );
