@@ -1,4 +1,4 @@
-import React from 'recat';
+import React from 'react';
 import SectionContainer from "@/shared/components/containers/SectionContainer";
 import TextInput from "@/shared/components/inputs/TextInput";
 
