@@ -8,6 +8,9 @@ const AdvancedSearchBar = () => {
   return (
     <SectionContainer>
       <TextInput src={Search} alt={"Place"} placeholder={"장소를 검색해보세요"} />
+      <select>
+        <option></option>
+      </select>
     </SectionContainer>
   )
 }

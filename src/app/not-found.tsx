@@ -1,7 +1,11 @@
 import React from "react";
 
 const NotFound = () => {
-  return <div>요청하신 페이지는 존재하지 않습니다.</div>;
+  return <main className="relative w-screen h-screen z-999 bg-background">
+    <div>
+
+    </div>
+  </main>;
 };
 
 export default NotFound;
