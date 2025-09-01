@@ -1,4 +1,6 @@
 import React from 'react';
+import BookmarkButton from "@/shared/components/inputs/BookmarkButton";
+import DistanceContainer from "@/shared/components/containers/DistanceContainer";
 
 interface CardContainerProps {
   title: string;
@@ -17,8 +19,9 @@ const CardContainer: React.FC<CardContainerProps> = ({title, score, bookmark, li
         <span className="text-body-lg text-white">{title}</span>
         <span className="text-caption text-secondary">{score}  ·  {"방문객 증가 중"}</span>
       </header>
-      <footer className="">
-        123
+      <footer className="flex flex-row justify-between">
+        <BookmarkButton count={17600} />
+        <DistanceContainer distance={3100} />
       </footer>
     </article>
   )
