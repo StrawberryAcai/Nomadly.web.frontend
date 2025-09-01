@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Map } from "react-kakao-maps-sdk";
+import {Map, MapMarker} from "react-kakao-maps-sdk";
 import useKakaoLoader from "@/shared/hooks/useKakaoLoader";
 
 export default function Page() {
@@ -46,7 +46,9 @@ export default function Page() {
         center={center}
         level={3}
         className="h-full w-full"
-      />
+      >
+        <MapMarker position={center} />
+      </Map>
       <div className="absolute top-4 left-4 flex gap-2 z-999">
         <button
           onClick={startTracking}
