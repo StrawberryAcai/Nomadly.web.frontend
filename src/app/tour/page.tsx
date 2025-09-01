@@ -47,7 +47,7 @@ export default function Page() {
         level={3}
         className="h-full w-full"
       />
-      <div className="absolute top-4 left-4 flex gap-2">
+      <div className="absolute top-4 left-4 flex gap-2 z-999">
         <button
           onClick={startTracking}
           className="px-4 py-2 bg-blue-500 text-white rounded"
