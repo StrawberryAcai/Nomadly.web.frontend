@@ -9,12 +9,8 @@ export default function ProfilePage() {
       try {
         const { data } = await api.get("/api/users/profile");
         console.log("Profile data:", data);
-      } catch (err: any) {
-        if (err.response) {
-          console.error("Error response:", err.response.status, err.response.data);
-        } else {
-          console.error("Error:", err.message);
-        }
+      } catch (err) {
+        console.log(err);
       }
     };
 
