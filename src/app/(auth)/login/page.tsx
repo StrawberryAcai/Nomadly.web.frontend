@@ -18,8 +18,8 @@ export default function LoginPage() {
         setAccessToken(token);
         setMessage("✅ 로그인 성공!");
       }
-    } catch (err: any) {
-      setMessage("❌ 로그인 실패: " + (err.response?.data?.detail || "알 수 없는 오류"));
+    } catch (err) {
+      setMessage("❌ 로그인 실패: " + (err || "알 수 없는 오류"));
     }
   };
 

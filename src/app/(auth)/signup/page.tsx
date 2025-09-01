@@ -13,8 +13,8 @@ export default function SignupPage() {
     try {
       await api.post("/api/users/signup", { username, password });
       setMessage("✅ 회원가입 성공! 이제 로그인하세요.");
-    } catch (err: any) {
-      setMessage("❌ 회원가입 실패: " + (err.response?.data?.detail || "알 수 없는 오류"));
+    } catch (err) {
+      setMessage("❌ 회원가입 실패: " + (err || "알 수 없는 오류"));
     }
   };
 
