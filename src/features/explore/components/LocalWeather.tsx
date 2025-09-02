@@ -1,9 +1,9 @@
 'use client';
 
-import {useEffect, useState} from 'react';
-import { getRegion } from '@/server/services/kakao/service';
+import { useEffect, useState } from 'react';
 
 export default function LocalWeather() {
+  const [address, setAddress] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -16,8 +16,15 @@ export default function LocalWeather() {
       async (position) => {
         try {
           const { latitude, longitude } = position.coords;
-          const region = await getRegion(latitude, longitude);
-          console.log('Region data:', region);
+          const res = await fetch(`/api/kakao/region?lat=${latitude}&lon=${longitude}`);
+          const data = await res.json();
+
+          if (data.error) {
+            setError(data.error);
+          } else {
+            setAddress(data.addressName);
+            console.log('Region data:', data.addressName);
+          }
         } catch (err) {
           console.error(err);
           setError('지역 정보를 가져오는 데 실패했습니다.');
@@ -34,8 +41,10 @@ export default function LocalWeather() {
     <div className="p-4 bg-gray-50 border rounded-md">
       {error ? (
         <p className="text-red-500">{error}</p>
+      ) : address ? (
+        <p>현재 위치: {address}</p>
       ) : (
-        <p>현재 위치 정보를 콘솔에서 확인하세요.</p>
+        <p>위치 정보를 가져오는 중...</p>
       )}
     </div>
   );
