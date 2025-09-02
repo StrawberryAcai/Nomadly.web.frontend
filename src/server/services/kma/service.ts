@@ -68,7 +68,7 @@ export async function getWeather(lat: number, lon: number): Promise<KmaWeatherRe
       unit: '°C',
       location: `위도: ${lat}, 경도: ${lon} (nx:${nx}, ny:${ny})`,
     };
-  } catch (error: any) {
+  } catch (error) {
     console.error('기상청 API 호출 오류:', error);
     throw new Error('날씨 정보를 가져오는 데 실패했습니다.');
   }
