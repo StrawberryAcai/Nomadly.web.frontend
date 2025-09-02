@@ -40,12 +40,12 @@ export default function Page() {
   };
 
   return (
-    <section className="h-[calc(100vh-4rem)] w-full relative">
+    <section className="flex-1 flex relative">
       <Map
         id="map"
         center={center}
         level={3}
-        className="h-full w-full"
+        className="flex-1"
       >
         <MapMarker position={center} />
       </Map>
