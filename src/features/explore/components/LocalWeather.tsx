@@ -1,30 +1,42 @@
 'use client';
 
-import { useEffect } from 'react';
+import {useEffect, useState} from 'react';
 import { getRegion } from '@/server/services/kakao/service';
 
-interface RegionLoggerProps {
-  lat: number;
-  lon: number;
-}
+export default function LocalWeather() {
+  const [error, setError] = useState<string | null>(null);
 
-export default function RegionLogger({ lat, lon }: RegionLoggerProps) {
   useEffect(() => {
-    async function fetchRegion() {
-      try {
-        const region = await getRegion(lat, lon);
-        console.log('Region data:', region);
-      } catch (error) {
-        console.error('Failed to fetch region:', error);
-      }
+    if (!navigator.geolocation) {
+      setError('브라우저에서 위치 정보를 지원하지 않습니다.');
+      return;
     }
 
-    fetchRegion();
-  }, [lat, lon]);
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          const { latitude, longitude } = position.coords;
+          const region = await getRegion(latitude, longitude);
+          console.log('Region data:', region);
+        } catch (err) {
+          console.error(err);
+          setError('지역 정보를 가져오는 데 실패했습니다.');
+        }
+      },
+      (err) => {
+        console.error(err);
+        setError('위치 정보 제공을 허용하지 않았습니다.');
+      }
+    );
+  }, []);
 
   return (
     <div className="p-4 bg-gray-50 border rounded-md">
-      <p>위치 정보를 콘솔에서 확인하세요.</p>
+      {error ? (
+        <p className="text-red-500">{error}</p>
+      ) : (
+        <p>현재 위치 정보를 콘솔에서 확인하세요.</p>
+      )}
     </div>
   );
 }
