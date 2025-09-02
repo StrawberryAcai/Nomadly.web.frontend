@@ -7,5 +7,5 @@ export async function getRegion(lat: number, lon: number) {
     "/geo/coord2regioncode.json",
     { params: { x: lon, y: lat, input_coord: "WGS84" } }
   );
-  return res.data.documents[0].road_address.address_name;
+  return res.data;
 }
