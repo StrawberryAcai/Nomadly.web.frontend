@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import Image from "next/image";
 
-import Downarrow from '@public/icons/button/downarrow.svg'
+import DownArrow from '@public/icons/arrow/down_arrow.svg';
 
 interface SelectProps {
   placeholder?: string;
@@ -14,7 +14,7 @@ const Select: React.FC<SelectProps> = ({placeholder, items}) => {
   const [selected, setSelected] = useState<string | null>(null);
   return (
     <div className="px-3 py-1.5 rounded-[1.1875rem] border-1 border-outline relative" onClick={()=>setIsOpen(!isOpen)}>
-      <button className="flex" >{selected?selected:placeholder}<Image src={Downarrow} alt="DownArrow" /></button>
+      <button className="flex" >{selected?selected:placeholder}<Image src={DownArrow} alt="DownArrow" /></button>
       {isOpen && <div className="px-3 py-1.5 gap-1.5 bg-background top-9.5 rounded-[1.1875rem] border-1 border-outline flex flex-col absolute left-0 right-0 max-h-23 overflow-y-auto">{items.map((value, index) =>
         <SelectItem key={index}
                     value={value}
