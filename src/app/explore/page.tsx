@@ -3,7 +3,7 @@ import AdvancedSearchBar from "@/features/explore/components/AdvancedSearchBar";
 import MiniSuggestList from "@/features/explore/components/MiniSuggestList";
 import LocalWeather from "@/features/explore/components/LocalWeather";
 
-export default async function Home() {
+export default async function Page() {
   return (
     <MainContainer>
       <LocalWeather />
