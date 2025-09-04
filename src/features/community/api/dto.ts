@@ -1,5 +1,5 @@
-interface PlanListRequest {
-  keyword: string;
+export interface PlanListRequest {
+  keyword?: string;
 }
 interface PlanItem {
   plan_id: number;
@@ -10,7 +10,7 @@ interface PlanItem {
   like: number;
   bookmark: number;
 }
-interface PlanListResponse {
+export interface PlanListResponse {
   plans: PlanItem[];
 }
 
