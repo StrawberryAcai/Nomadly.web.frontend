@@ -1,40 +1,36 @@
-import React from "react";
-import LikeButton from "@/shared/components/inputs/LikeButton";
-import BookmarkButton from "@/shared/components/inputs/BookmarkButton";
+import React from 'react';
+import LikeButton from '@/shared/components/inputs/LikeButton';
+import BookmarkButton from '@/shared/components/inputs/BookmarkButton';
+import { PlanItem as PlanItemProps } from '@/features/community/api/dto';
+import { usePlanAction } from '@/features/community/api/mutations';
 
-function truncateText(text: string, maxLength = 40): string {
-  if (text.length > maxLength) {
-    return text.slice(0, maxLength) + "...";
-  }
-  return text;
-}
-interface ReviewItemProps {
-  plan_id: number;
-  url: string;
-  title: string;
-  content: string;
-  like: number;
-  is_liked: boolean;
-  bookmark: number;
-  is_bookmarked: boolean;
-}
-const PlanItem: React.FC<ReviewItemProps> = (props) => {
-  const {plan_id, url, title, content, like, is_liked, bookmark, is_bookmarked} = props;
+const PlanItem: React.FC<PlanItemProps> = (plan) => {
+  const tempUrl = "https://i.namu.wiki/i/Z41qK_Jp4TYWr7IaMOcgrRmtTF_F7qWX5ugdrTDjAHZPkvrf8ahJZYmWC-6cmaS1kgPrsV4UgzgxVNigvN9Uml2-5Vq5Oa-LLuNdMqAglZs1pG7ArNSN2Mzsvdewm5KjCTfJdteQyYDGl9njSF6_WQ.webp";
+  const likeMutation = usePlanAction(plan, 'like');
+  const bookmarkMutation = usePlanAction(plan, 'bookmark');
+
   return (
     <article className="px-6 py-2 flex gap-2 justify-between">
       <div className="h-[6.75rem] flex flex-col justify-between">
         <div>
-          <h4>{title}</h4>
-          <p className="text-body-md text-secondary">{truncateText(content)}</p>
+          <h4>{plan.title}</h4>
+          <p className="text-body-md text-secondary">
+            {plan.content.length > 40 ? plan.content.slice(0, 40) + '...' : plan.content}
+          </p>
         </div>
         <div className="flex px-2 gap-4">
-          <LikeButton count={like} isLiked={is_liked} />
-          <BookmarkButton count={bookmark} isBookmark={is_bookmarked} />
+          <LikeButton count={plan.like} isLiked={plan.is_liked} onClick={() => likeMutation.mutate()} />
+          <BookmarkButton count={plan.bookmark} isBookmark={plan.is_bookmarked} onClick={() => bookmarkMutation.mutate()} />
         </div>
       </div>
-      <div className={"w-25 h-25 min-w-25 min-h-25 bg-cover rounded-md"} style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${url})`}} />
+      <div
+        className="w-25 h-25 min-w-25 min-h-25 bg-cover rounded-md"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${tempUrl})`,
+        }}
+      />
     </article>
-  )
-}
+  );
+};
 
 export default PlanItem;
