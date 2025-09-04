@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
   }
 };
 
+// @ts-expect-error
 export default withPWA({
   dest: "public",
   register: true,
