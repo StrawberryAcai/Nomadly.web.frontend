@@ -1,7 +1,7 @@
 export interface PlanListRequest {
   keyword?: string;
 }
-interface PlanItem {
+export interface PlanItem {
   plan_id: number;
   title: string;
   content: string;
@@ -14,4 +14,10 @@ export interface PlanListResponse {
   plans: PlanItem[];
 }
 
-export default PlanItem
+export interface PlanActionRequest {
+  type: "bookmark" | "like";
+}
+
+export interface PlanActionResponse {
+  message: string;
+}
