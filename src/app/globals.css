@@ -11,14 +11,15 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
-
+html{
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-pretendard), Arial, Helvetica, sans-serif;
   font-weight: 400;
   overflow-x: hidden;
-  padding-bottom: env(safe-area-inset-bottom);
   position: relative;
 }
 

@@ -25,7 +25,7 @@ const BottomNavIcon: React.FC<BottomNavIconProps> = ({href, src, alt}) => (
 
 const BottomNav: React.FC = () => {
   return (
-    <nav className="h-[calc(4rem+env(safe-area-inset-bottom))] w-full sticky bottom-0 z-999 border-outline border-t-1 flex justify-around px-4 py-2 bg-background">
+    <nav className="w-full fixed bottom-0 z-999 border-outline border-t-1 flex justify-around px-4 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] bg-background">
       <BottomNavIcon href="/" src={Home} alt="홈" />
       <BottomNavIcon href="/explore" src={Explore} alt="지역체험" />
       <BottomNavIcon href="/tour" src={Tour} alt="관광" />

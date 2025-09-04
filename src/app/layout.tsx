@@ -31,8 +31,8 @@ export default function RootLayout({
             {children}
             </ReactQueryProvider>
           </main>
-          <BottomNav />
         </div>
+        <BottomNav />
       </body>
     </html>
   );
