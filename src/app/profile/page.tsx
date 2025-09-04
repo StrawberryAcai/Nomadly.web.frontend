@@ -13,7 +13,6 @@ export default function ProfilePage() {
         console.log(err);
       }
     };
-
     fetchProfile();
   }, []);
 
