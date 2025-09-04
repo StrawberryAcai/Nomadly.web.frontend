@@ -1,4 +1,3 @@
-import withPWA from "next-pwa";
 import {NextConfig} from "next";
 
 const nextConfig: NextConfig = {
@@ -9,9 +8,4 @@ const nextConfig: NextConfig = {
   }
 };
 
-// @ts-expect-error
-export default withPWA({
-  dest: "public",
-  register: true,
-  skipWaiting: true
-})(nextConfig);
+export default nextConfig;
