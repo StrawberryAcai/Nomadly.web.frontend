@@ -3,6 +3,7 @@ import LikeButton from '@/shared/components/inputs/LikeButton';
 import BookmarkButton from '@/shared/components/inputs/BookmarkButton';
 import { PlanItem as PlanItemProps } from '@/features/community/api/dto';
 import { usePlanAction } from '@/features/community/api/mutations';
+import Image from "next/image";
 
 const PlanItem: React.FC<PlanItemProps> = (plan) => {
   const tempUrl = "https://i.namu.wiki/i/Z41qK_Jp4TYWr7IaMOcgrRmtTF_F7qWX5ugdrTDjAHZPkvrf8ahJZYmWC-6cmaS1kgPrsV4UgzgxVNigvN9Uml2-5Vq5Oa-LLuNdMqAglZs1pG7ArNSN2Mzsvdewm5KjCTfJdteQyYDGl9njSF6_WQ.webp";
@@ -23,12 +24,7 @@ const PlanItem: React.FC<PlanItemProps> = (plan) => {
           <BookmarkButton count={plan.bookmark} isBookmark={plan.is_bookmarked} onClick={() => bookmarkMutation.mutate()} />
         </div>
       </div>
-      <div
-        className="w-25 h-25 min-w-25 min-h-25 bg-cover rounded-md"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${tempUrl})`,
-        }}
-      />
+      <Image src={tempUrl} alt="img" width={100} height={100} className="rounded-md min-h-25 max-h-25 min-w-25 max-w-25" />
     </article>
   );
 };
