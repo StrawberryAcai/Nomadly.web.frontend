@@ -1,6 +1,10 @@
 import withPWA from "next-pwa";
 const nextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {protocol: "https", hostname: "i.namu.wiki"}
+    ]
+  }
 };
 
 export default withPWA({
