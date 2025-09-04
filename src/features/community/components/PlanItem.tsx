@@ -9,7 +9,7 @@ function truncateText(text: string, maxLength = 40): string {
   return text;
 }
 interface ReviewItemProps {
-  id: number;
+  plan_id: number;
   url: string;
   title: string;
   content: string;
@@ -19,7 +19,7 @@ interface ReviewItemProps {
   is_bookmarked: boolean;
 }
 const PlanItem: React.FC<ReviewItemProps> = (props) => {
-  const {id, url, title, content, like, is_liked, bookmark, is_bookmarked} = props;
+  const {plan_id, url, title, content, like, is_liked, bookmark, is_bookmarked} = props;
   return (
     <article className="px-6 py-2 flex gap-2 justify-between">
       <div className="h-[6.75rem] flex flex-col justify-between">
