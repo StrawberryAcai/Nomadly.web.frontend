@@ -4,6 +4,7 @@ import BookmarkButton from '@/shared/components/inputs/BookmarkButton';
 import { PlanItem as PlanItemProps } from '@/features/community/api/dto';
 import { usePlanAction } from '@/features/community/api/mutations';
 import Image from "next/image";
+import Link from "next/link";
 
 const PlanItem: React.FC<PlanItemProps> = (plan) => {
   const tempUrl = "https://i.namu.wiki/i/Z41qK_Jp4TYWr7IaMOcgrRmtTF_F7qWX5ugdrTDjAHZPkvrf8ahJZYmWC-6cmaS1kgPrsV4UgzgxVNigvN9Uml2-5Vq5Oa-LLuNdMqAglZs1pG7ArNSN2Mzsvdewm5KjCTfJdteQyYDGl9njSF6_WQ.webp";
@@ -11,7 +12,7 @@ const PlanItem: React.FC<PlanItemProps> = (plan) => {
   const bookmarkMutation = usePlanAction(plan, 'bookmark');
 
   return (
-    <article className="px-6 py-2 flex gap-2 justify-between">
+    <Link href={`/community/detail?plan_id=${plan.plan_id}`} className="px-6 py-2 flex gap-2 justify-between">
       <div className="h-[6.75rem] flex flex-col justify-between">
         <div>
           <h4>{plan.title}</h4>
@@ -25,7 +26,7 @@ const PlanItem: React.FC<PlanItemProps> = (plan) => {
         </div>
       </div>
       <Image src={tempUrl} alt="img" width={100} height={100} className="rounded-md min-h-25 max-h-25 min-w-25 max-w-25" />
-    </article>
+    </Link>
   );
 };
 
