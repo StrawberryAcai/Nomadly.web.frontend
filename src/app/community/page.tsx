@@ -6,7 +6,7 @@ import SectionContainer from "@/shared/components/containers/SectionContainer";
 import TextInput from "@/shared/components/inputs/TextInput";
 import Search from "@public/icons/search.svg";
 import PlanList from "@/features/community/components/PlanList";
-import { usePlanListQuery } from "@/features/community/api/queries";
+import { usePlanListQuery } from "@/features/community/hooks/usePlanListQuery";
 
 export default function Page() {
   const [keyword, setKeyword] = useState("");
