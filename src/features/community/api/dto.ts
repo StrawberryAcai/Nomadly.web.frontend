@@ -14,10 +14,27 @@ export interface PlanListResponse {
   plans: PlanItem[];
 }
 
-export interface PlanActionRequest {
-  type: "bookmark" | "like";
-}
-
-export interface PlanActionResponse {
-  message: string;
+export interface PlanDetailResponse {
+  plan_id: number;
+  title: string;
+  content: string;
+  is_liked: boolean;
+  is_bookmarked: boolean;
+  like: number;
+  bookmark: number;
+  avg_rate: number;
+  comment: number;
+  plan: {
+    start_date: string;
+    end_date: string;
+    plan: {
+      todo: string;
+      place: string;
+      time: string;
+    }[][];
+    comments: {
+      content: string;
+      rate: number;
+    }[];
+  };
 }

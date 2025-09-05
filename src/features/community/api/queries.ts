@@ -1,10 +1,7 @@
-"use client";
+import { PlanListResponse, PlanListRequest, PlanDetailResponse } from "./dto";
+import { dummyPlanData, dummyPlanDetailData } from "./dummy";
 
-import { useQuery } from "@tanstack/react-query";
-import { PlanListResponse, PlanListRequest } from "./dto";
-import { dummyPlanData } from "./dummy";
-
-const fetchPlanList = async (params?: PlanListRequest): Promise<PlanListResponse> => {
+export const fetchPlanList = async (params?: PlanListRequest): Promise<PlanListResponse> => {
   if (params?.keyword) {
     return {
       plans: dummyPlanData.plans.filter((plan) =>
@@ -15,10 +12,7 @@ const fetchPlanList = async (params?: PlanListRequest): Promise<PlanListResponse
   return dummyPlanData;
 };
 
-export const usePlanListQuery = (params?: PlanListRequest) => {
-  return useQuery({
-    queryKey: ["planList", params?.keyword],
-    queryFn: () => fetchPlanList(params),
-    staleTime: 1000 * 60,
-  });
+export const getPlanDetail = async (plan_id: number | undefined): Promise<PlanDetailResponse | null> => {
+  if(undefined === plan_id) return null;
+  return dummyPlanDetailData;
 };
