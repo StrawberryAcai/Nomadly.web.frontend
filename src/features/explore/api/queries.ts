@@ -19,6 +19,7 @@ export function useRegionQuery(lat: number | null, lon: number | null) {
     queryKey: ["region", lat, lon],
     queryFn: () => fetchRegion(lat!, lon!),
     enabled: !!lat && !!lon, // 좌표가 있을 때만 실행
+    staleTime: 10000 * 60,
   });
 }
 
@@ -27,5 +28,6 @@ export function useWeatherQuery(lat: number | null, lon: number | null) {
     queryKey: ["weather", lat, lon],
     queryFn: () => fetchWeather(lat!, lon!),
     enabled: !!lat && !!lon,
+    staleTime: 10000 * 60,
   });
 }
