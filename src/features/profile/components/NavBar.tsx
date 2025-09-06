@@ -9,9 +9,9 @@ const CustomLink: React.FC<CustomLinkProps> = ({href, children}) => <Link href={
 const NavBar: React.FC = () => (
   <nav className="px-4 flex justify-around">
     <CustomLink href="/profile">저장된 일정</CustomLink>
-    <CustomLink href="/src/app/(page)/(with-nav)/profile/bookmark/plans">북마크한 일정</CustomLink>
-    <CustomLink href="/src/app/(page)/(with-nav)/profile/bookmark/places">북마크한 장소</CustomLink>
-    <CustomLink href="/src/app/(page)/(with-nav)/profile/community">커뮤니티 활동</CustomLink>
+    <CustomLink href="/profile/bookmark/plans">북마크한 일정</CustomLink>
+    <CustomLink href="/profile/bookmark/places">북마크한 장소</CustomLink>
+    <CustomLink href="/profile/community">커뮤니티 활동</CustomLink>
   </nav>
 )
 
