@@ -1,5 +1,5 @@
 import React from "react";
-import TopBar from "@/shared/components/TopBar";
+import TopBar from "@/shared/components/layout/TopBar";
 import Image from "next/image";
 import Setting from "@public/icons/button/setting.svg";
 import ProfileCard from "@/features/profile/components/ProfileCard";

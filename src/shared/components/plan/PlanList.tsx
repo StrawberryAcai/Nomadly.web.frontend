@@ -1,5 +1,5 @@
 import React from 'react';
-import PlanItem from "@/features/community/components/PlanItem";
+import PlanItem from "@/shared/components/plan/PlanItem";
 import {PlanListResponse} from "@/features/community/api/dto";
 
 interface PlanListProps {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import React from "react";
-import BottomNav from "@/shared/components/BottomNav";
+import BottomNav from "@/shared/components/layout/BottomNav";
 import ReactQueryProvider from "@/shared/providers/ReactQueryProvider";
 
 const pretendard = localFont({

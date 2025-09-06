@@ -5,7 +5,7 @@ import MainContainer from "@/shared/components/containers/MainContainer";
 import SectionContainer from "@/shared/components/containers/SectionContainer";
 import TextInput from "@/shared/components/inputs/TextInput";
 import Search from "@public/icons/search.svg";
-import PlanList from "@/features/community/components/PlanList";
+import PlanList from "@/shared/components/plan/PlanList";
 import { usePlanListQuery } from "@/features/community/hooks/usePlanListQuery";
 
 export default function Page() {

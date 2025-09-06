@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import LikeButton from '@/shared/components/inputs/LikeButton';
 import BookmarkButton from '@/shared/components/inputs/BookmarkButton';
@@ -12,7 +13,7 @@ const PlanItem: React.FC<PlanItemProps> = (plan) => {
   const bookmarkMutation = usePlanAction(plan, 'bookmark');
 
   return (
-    <Link href={`/community/detail?plan_id=${plan.plan_id}`} className="px-6 py-2 flex gap-2 justify-between">
+    <Link href={`/plan?plan_id=${plan.plan_id}`} className="px-6 py-2 flex gap-2 justify-between">
       <div className="h-[6.75rem] flex flex-col justify-between">
         <div>
           <h4>{plan.title}</h4>
