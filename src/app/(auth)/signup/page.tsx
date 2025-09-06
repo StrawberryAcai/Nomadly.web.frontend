@@ -47,7 +47,7 @@ export default function SignupPage() {
   };
 
   return (
-    <form onSubmit={handleSignup} method="POST" className="relative h-screen w-screen py-12 flex flex-col justify-between z-1000 bg-background">
+    <form onSubmit={handleSignup} method="POST" className="relative h-screen w-screen py-12 flex flex-col justify-between z-1000 bg-background box-border overflow-hidden">
       <SectionContainer className="flex-col">
         <h1 className="text-3xl font-bold">만나서 반가워요!</h1>
         <p className="text-secondary">환영합니다! 새로운 계정을 만들어보세요.</p>
