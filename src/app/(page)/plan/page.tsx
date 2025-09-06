@@ -3,6 +3,7 @@ import TopBar from "@/shared/components/layout/TopBar";
 import { NextPage } from "next";
 import { getPlanDetail } from "@/features/community/api/queries";
 import PlanContext from "@/features/plan/components/PlanContext";
+import CommentList from "@/features/plan/components/CommentList";
 
 
 interface CDetailProps {
@@ -21,7 +22,7 @@ const Page: NextPage<CDetailProps> = async ({searchParams}) => {
                    avg_rate={data.avg_rate}
                    comment={data.comment}
                    content={data.content} />
-
+        <CommentList comments={data.plan.comments} />
       </>}
     </MainContainer>
   )

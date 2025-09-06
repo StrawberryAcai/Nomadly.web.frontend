@@ -14,14 +14,7 @@ export interface PlanListResponse {
   plans: PlanItem[];
 }
 
-export interface PlanDetailResponse {
-  plan_id: number;
-  title: string;
-  content: string;
-  is_liked: boolean;
-  is_bookmarked: boolean;
-  like: number;
-  bookmark: number;
+export interface PlanDetailResponse extends PlanItem {
   avg_rate: number;
   comment: number;
   plan: {
