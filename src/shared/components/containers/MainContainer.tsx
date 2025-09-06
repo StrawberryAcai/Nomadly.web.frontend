@@ -5,7 +5,7 @@ interface MainContainerProps {
   className?: string;
 }
 const MainContainer: React.FC<MainContainerProps> = ({children, className}) => (
-  <main className={`h-full w-full flex flex-col py-4 gap-4 pb-20 ${className}`}>
+  <main className={`w-full flex flex-col py-4 gap-4 ${className}`}>
     {children}
   </main>
 )

@@ -28,14 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${pretendard.variable} antialiased overflow-x-hidden`}>
-        <div className="min-h-[100dvh] min-w-[100dvw] flex flex-col pb-[env(safe-area-inset-bottom)]"> {/* ✅ vh 대신 dvh 사용 */}
-          <main className="flex-1 flex w-full h-full">
+        <div className="min-h-[100dvh] max-h-[100dvh] min-w-[100dvw] flex flex-col"> {/* ✅ vh 대신 dvh 사용 */}
+          <main className="h-[calc(100dvh-calc(4rem+env(safe-area-inset-bottom)))] flex w-full overflow-y-auto">
             <ReactQueryProvider>
             {children}
             </ReactQueryProvider>
           </main>
+          <BottomNav />
         </div>
-        <BottomNav />
       </body>
     </html>
   );
