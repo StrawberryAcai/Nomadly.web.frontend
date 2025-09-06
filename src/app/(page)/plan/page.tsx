@@ -1,12 +1,12 @@
 import MainContainer from "@/shared/components/containers/MainContainer";
-import TopBar from "@/shared/components/TopBar";
+import TopBar from "@/shared/components/layout/TopBar";
 import { NextPage } from "next";
 import { getPlanDetail } from "@/features/community/api/queries";
-import PlanContext from "@/features/community/detail/components/PlanContext";
+import PlanContext from "@/features/plan/components/PlanContext";
 
 
 interface CDetailProps {
-  searchParams: { plan_id?: number };
+  searchParams: { plan_id: number };
 }
 const Page: NextPage<CDetailProps> = async ({searchParams}) => {
   const data = await getPlanDetail(searchParams.plan_id);
