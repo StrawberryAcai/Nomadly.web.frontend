@@ -24,19 +24,19 @@ export default function LoginPage() {
       const token = res.headers["authorization"]?.replace("Bearer ", "");
       if (token) {
         setAccessToken(token);
-        router.back();
+        router.push("/profile");
       }
     } catch (err) {
       if (axios.isAxiosError(err) && err.response?.status === 401) setMessage("아이디 또는 비밀번호가 올바르지 않아요.");
     }
   };
   return (
-    <form onSubmit={handleLogin} method="POST" className="flex-1 flex flex-col py-4 justify-between">
+    <form onSubmit={handleLogin} method="POST" className="py-12 h-screen w-screen relative z-1000 flex flex-col justify-between bg-background">
       <SectionContainer className="flex-col">
         <h1 className="text-3xl font-bold">만나서 반가워요!</h1>
         <p className="text-secondary">다시 돌아오셨군요!</p>
       </SectionContainer>
-      <SectionContainer className="flex-col gap-2 h-[14.25rem]">
+      <SectionContainer className="flex-col gap-2">
         <div className="gap-1 py-2">
           <span>아이디</span>
           <TextInput placeholder="아이디를 입력해 주세요." onChange={(e)=>setUsername(e.target.value)} />
