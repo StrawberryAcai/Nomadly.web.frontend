@@ -10,16 +10,17 @@ const ProfileCard: React.FC = () => {
   const {data} = useProfileQuery();
   return (
     <section className="pt-1 px-4">
-      <div className="h-18 border-outline border-1 rounded-xl p-3 flex gap-2 items-center">
-        {data && <>
+      <div className="h-18 border-outline border-1 rounded-xl p-3 flex gap-2 items-center" onClick={() => {
+        if(!data) location.href="/login";
+      }}>
+        {data ? <>
         <Image src={tempUrl} alt="img" width={48} height={48} className="rounded-full max-w-12 min-w-12 max-h-12 min-h-12" />
         <div className="flex-1 flex flex-col">
           <span className="text-body-md">{data.username}</span>
           <span className="text-caption text-secondary">{data.profile}</span>
         </div>
-        </>}
+        </> : <span className="flex-1 text-secondary items-center">로그인 후 이용 가능합니다.</span>}
         <Image src={RightArrow} alt="right_arrow" />
-        <button onClick={()=> {logout()}}>로그아웃</button>
       </div>
     </section>
   )
