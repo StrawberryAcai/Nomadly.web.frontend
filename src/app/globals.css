@@ -22,8 +22,19 @@ body {
   overflow-x: hidden;
   position: relative;
 }
+html, body {
+    overscroll-behavior: none; /* 상/하/좌/우 튕김 모두 제거 */
+}
+html, body {
+    -webkit-overflow-scrolling: auto; /* momentum scroll(탄성 스크롤) 제거 */
+}
 
 @layer utilities {
+    .not-scroll{
+        overscroll-behavior: none; /* 상/하/좌/우 튕김 모두 제거 */
+        -webkit-overflow-scrolling: auto; /* momentum scroll(탄성 스크롤) 제거 */
+        overflow: hidden;
+    }
     .bg-background {
         @apply bg-[var(--background)];
     }
