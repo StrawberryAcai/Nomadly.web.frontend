@@ -1,9 +1,12 @@
-"use client";
+import MainContainer from "@/shared/components/containers/MainContainer";
+import {getMePlan} from "@/features/profile/api/queries";
+import PlanList from "@/shared/components/plan/PlanList";
 
-export default function Page() {
+export default async function Page() {
+  const data = await getMePlan();
   return (
-    <>
-    ㅎㅇ
-    </>
+    <MainContainer>
+      {data && <PlanList data={data} />}
+    </MainContainer>
   );
 }
