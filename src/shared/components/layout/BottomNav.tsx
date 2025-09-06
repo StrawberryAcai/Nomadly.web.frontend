@@ -17,7 +17,7 @@ interface BottomNavIconProps {
 }
 
 const BottomNavIcon: React.FC<BottomNavIconProps> = ({href, src, alt}) => (
-  <Link href={href} className="flex-1 flex flex-col items-center min-h-12">
+  <Link href={href} className="flex-1 flex flex-col items-center min-h-12" scroll={true}>
     <Image src={src} alt={alt} height={24} width={24} />
     <span className="text-body-md text-secondary">{alt}</span>
   </Link>
