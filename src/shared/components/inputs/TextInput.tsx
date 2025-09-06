@@ -3,17 +3,18 @@ import Image from "next/image";
 import {StaticImport} from "next/dist/shared/lib/get-img-props";
 
 interface TextInputProps {
-  src: StaticImport | string;
-  alt: string;
+  src?: StaticImport | string;
+  alt?: string;
+  type?: "password" | "text";
   placeholder: string;
   ref?: React.Ref<HTMLInputElement>
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
-const TextInput: React.FC<TextInputProps> = ({src, alt, placeholder, ref, onChange}) => {
+const TextInput: React.FC<TextInputProps> = ({src, alt, placeholder, ref, onChange, type = "text"}) => {
   return (
-    <div className="h-full w-full flex p-3 border-outline border-1 box-border rounded-xl gap-1">
-      <Image src={src} alt={alt} />
-      <input type="text" placeholder={placeholder} ref={ref} className="flex-1 focus:outline-none" onChange={onChange} />
+    <div className="w-full flex p-3 border-outline border-1 box-border rounded-xl gap-1">
+      {src && alt && <Image src={src} alt={alt} />}
+      <input type={type} placeholder={placeholder} ref={ref} className="flex-1 box-border focus:outline-none" onChange={onChange} required />
     </div>
   )
 }
