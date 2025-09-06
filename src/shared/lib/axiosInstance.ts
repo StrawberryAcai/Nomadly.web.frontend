@@ -21,6 +21,8 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
+    const originalRequest = error.config;
+    if (originalRequest?.url?.includes("/api/auth/login")) return Promise.reject(error);
     if (error.response?.status === 401) {
       try {
         const res = await axios.post(
