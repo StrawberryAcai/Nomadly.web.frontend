@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import Image from "next/image";
 import RightArrow from '@public/icons/arrow/right_arrow.svg';
 import {useProfileQuery} from "@/features/profile/hooks/useProfileQuery";
+import {logout} from "@/shared/lib/axiosInstance";
 
 const ProfileCard: React.FC = () => {
   const tempUrl = "https://i.namu.wiki/i/Z41qK_Jp4TYWr7IaMOcgrRmtTF_F7qWX5ugdrTDjAHZPkvrf8ahJZYmWC-6cmaS1kgPrsV4UgzgxVNigvN9Uml2-5Vq5Oa-LLuNdMqAglZs1pG7ArNSN2Mzsvdewm5KjCTfJdteQyYDGl9njSF6_WQ.webp";
@@ -18,6 +19,7 @@ const ProfileCard: React.FC = () => {
         </div>
         </>}
         <Image src={RightArrow} alt="right_arrow" />
+        <button onClick={()=> {logout()}}>로그아웃</button>
       </div>
     </section>
   )

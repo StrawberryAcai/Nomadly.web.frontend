@@ -1,4 +1,5 @@
 import axios from "axios";
+import {deleteCookie} from "@/shared/lib/cookieUtil";
 
 let accessToken: string | null = null;
 
@@ -10,6 +11,10 @@ const api = axios.create({
   baseURL: "http://localhost:8000",
   withCredentials: true,
 });
+
+export const logout = async () => {
+  return deleteCookie();
+}
 
 api.interceptors.request.use((config) => {
   if (accessToken) {
@@ -37,7 +42,7 @@ api.interceptors.response.use(
           return api.request(error.config);
         }
       } catch (refreshError) {
-        console.error("토큰 갱신 실패:", refreshError);
+        console.log("토큰 갱신 실패:", refreshError);
       }
     }
     return Promise.reject(error);
