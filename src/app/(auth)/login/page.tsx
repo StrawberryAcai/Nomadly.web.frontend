@@ -31,7 +31,7 @@ export default function LoginPage() {
     }
   };
   return (
-    <form onSubmit={handleLogin} method="POST" className="py-12 flex-1 flex flex-col justify-between bg-background">
+    <form onSubmit={handleLogin} method="POST" className="flex-1 flex flex-col justify-between bg-background">
       <SectionContainer className="flex-col">
         <h1 className="text-3xl font-bold">만나서 반가워요!</h1>
         <p className="text-secondary">다시 돌아오셨군요!</p>
