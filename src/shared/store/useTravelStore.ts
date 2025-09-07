@@ -8,7 +8,7 @@ export interface TravelState {
   purpose: string;
   activeness: boolean;
   budget_detail: number;
-  budget_preset: "low" | "medium" | "high";
+  budget_preset: string;
   companies: string;
   prefered_time: string;
   work: string;
