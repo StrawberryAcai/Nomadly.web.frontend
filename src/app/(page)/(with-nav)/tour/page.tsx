@@ -1,11 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import {Map, MapMarker} from "react-kakao-maps-sdk";
 import useKakaoLoader from "@/shared/hooks/useKakaoLoader";
 
+import Pos from '@public/icons/button/map/pos.svg';
+import PosPrimary from "@public/icons/button/map/pos_primary.svg";
+import Image from "next/image";
+
 export default function Page() {
   useKakaoLoader();
-
+  const [toggle, setToggle] = useState<boolean>(false);
   const [center, setCenter] = useState({ lat: 33.450701, lng: 126.570667 });
   const [watchId, setWatchId] = useState<number | null>(null);
 
@@ -39,6 +43,11 @@ export default function Page() {
     }
   };
 
+  useEffect(() => {
+    if(toggle) startTracking();
+    else stopTracking();
+  },[toggle]);
+
   return (
     <section className="flex-1 flex relative">
       <Map
@@ -49,20 +58,10 @@ export default function Page() {
       >
         <MapMarker position={center} />
       </Map>
-      <div className="absolute top-4 left-4 flex gap-2 z-999">
-        <button
-          onClick={startTracking}
-          className="px-4 py-2 bg-blue-500 text-white rounded"
-        >
-          위치 추적 시작
+        <button className="w-11 h-11 rounded-full absolute right-6 bottom-2.5 bg-background"
+                onClick={()=>setToggle(!toggle)}>
+          <Image src={toggle?PosPrimary:Pos} alt="pos" className="m-auto" />
         </button>
-        <button
-          onClick={stopTracking}
-          className="px-4 py-2 bg-red-500 text-white rounded"
-        >
-          추적 중지
-        </button>
-      </div>
     </section>
   );
 }
