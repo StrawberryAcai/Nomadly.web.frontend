@@ -4,8 +4,9 @@ import {usePathname, useRouter} from "next/navigation";
 
 interface BottomButtonProps {
   isActive: boolean;
+  text?: string;
 }
-const BottomButton: React.FC<BottomButtonProps> = ({isActive}) => {
+const BottomButton: React.FC<BottomButtonProps> = ({isActive, text}) => {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -21,7 +22,7 @@ const BottomButton: React.FC<BottomButtonProps> = ({isActive}) => {
   return (
     <button className={`w-full h-[calc(4rem+env(safe-area-inset-bottom))] fixed bottom-0 text-white ${isActive?"bg-primary":"bg-[#AAAAAA]"}`}
     onClick={()=> {if(isActive)handleClick()}}>
-      다음
+      {text?text:"다음"}
     </button>
   )
 }
