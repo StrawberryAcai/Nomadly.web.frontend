@@ -20,6 +20,9 @@ type Setter<T> = <K extends keyof T>(key: K, value: T[K]) => void;
 
 interface TravelStore extends TravelState {
   setField: Setter<TravelState>;
+  addInterests: (interest: string) => void;
+  removeInterests: (interest: string) => void;
+  resetInterests: () => void;
   addBookmark: (place: string) => void;
   removeBookmark: (place: string) => void;
   reset: () => void;
@@ -40,6 +43,12 @@ export const useTravelStore = create<TravelStore>((set) => ({
   bookmarked: [],
 
   setField: (key, value) => set({ [key]: value } as any),
+
+  addInterests: (interest) =>
+    set((state) => ({ interests: [...state.interests, interest] })),
+  removeInterests: (interests) =>
+    set((state) => ({ interests: state.interests.filter((p) => p !== interests) })),
+  resetInterests: () => set(() => ({ interests: [] })),
 
   addBookmark: (place) =>
     set((state) => ({ bookmarked: [...state.bookmarked, place] })),
