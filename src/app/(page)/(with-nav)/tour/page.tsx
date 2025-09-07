@@ -58,7 +58,7 @@ export default function Page() {
       >
         <MapMarker position={center} />
       </Map>
-        <button className="w-11 h-11 rounded-full absolute right-6 bottom-2.5 bg-background"
+        <button className="w-11 h-11 rounded-full absolute right-6 bottom-2.5 bg-background z-999"
                 onClick={()=>setToggle(!toggle)}>
           <Image src={toggle?PosPrimary:Pos} alt="pos" className="m-auto" />
         </button>
