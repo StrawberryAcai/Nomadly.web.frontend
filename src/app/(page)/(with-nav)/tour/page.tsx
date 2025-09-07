@@ -10,8 +10,29 @@ import Image from "next/image";
 export default function Page() {
   useKakaoLoader();
   const [toggle, setToggle] = useState<boolean>(false);
-  const [center, setCenter] = useState({ lat: 33.450701, lng: 126.570667 });
+  const [center, setCenter] = useState({ lat: 0, lng: 0 });
   const [watchId, setWatchId] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      alert("이 브라우저는 GPS를 지원하지 않습니다.");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setCenter({
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
+        });
+      },
+      (err) => {
+        console.error(err);
+        alert("위치 정보를 가져올 수 없습니다.");
+      },
+      { enableHighAccuracy: true }
+    );
+  }, []);
 
   const startTracking = () => {
     if (!navigator.geolocation) {
