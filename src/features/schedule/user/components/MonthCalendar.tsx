@@ -55,7 +55,7 @@ const MonthCalendar: React.FC = () => {
       {months.map((m, i) => (
         <SectionContainer key={i} className="p-4 flex-col">
           <h4 className="mb-2.5">{m.format("YYYY년 MM월")}</h4>
-          <div className="flex">
+          <div className="flex mb-2.5">
             {["일", "월", "화", "수", "목", "금", "토"].map((w) => (
               <div key={w} className="flex-1 text-center font-semibold">
                 {w}
