@@ -1,9 +1,9 @@
-"use client";
+import MainContainer from "@/shared/components/containers/MainContainer";
 
 export default function Page() {
   return (
-    <>
-      ㅎㅇ2
-    </>
+    <MainContainer>
+      
+    </MainContainer>
   );
 }
