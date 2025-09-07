@@ -32,12 +32,12 @@ const ShortcutButtons = () => {
     <div>
       <h3 className="px-6">🔍 빠르게 필요한 정보를 확인해 보세요!</h3>
       <SectionContainer className="h-[7.75rem] gap-4">
-        <ShortcutButton href="/" caption="혼자여도 괜찮아요" src={Community}>커뮤니티</ShortcutButton>
-        <ShortcutButton href="/" caption="현지인과 함께" src={Explore}>지역체험</ShortcutButton>
+        <ShortcutButton href="/community" caption="혼자여도 괜찮아요" src={Community}>커뮤니티</ShortcutButton>
+        <ShortcutButton href="/explore" caption="현지인과 함께" src={Explore}>지역체험</ShortcutButton>
       </SectionContainer>
       <SectionContainer className="h-[7.75rem] gap-4">
         <ShortcutButton href="/" caption="비자는 챙겨야죠" src={Visa}>비자정보</ShortcutButton>
-        <ShortcutButton href="/" caption="가끔은 혼자서" src={Tour}>관광정보</ShortcutButton>
+        <ShortcutButton href="/tour" caption="가끔은 혼자서" src={Tour}>관광정보</ShortcutButton>
       </SectionContainer>
     </div>
   )
