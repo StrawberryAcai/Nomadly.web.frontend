@@ -42,8 +42,8 @@ export const useTravelStore = create<TravelStore>((set) => ({
   work: "",
   bookmarked: [],
 
-  setField: (key, value) => set({ [key]: value } as any),
-
+  setField: <K extends keyof TravelState>(key: K, value: TravelState[K]) =>
+    set({ [key]: value } as Pick<TravelState, K>),
   addInterests: (interest) =>
     set((state) => ({ interests: [...state.interests, interest] })),
   removeInterests: (interests) =>
