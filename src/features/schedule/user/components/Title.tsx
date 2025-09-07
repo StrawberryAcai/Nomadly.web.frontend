@@ -9,9 +9,14 @@ interface TitleProps {
 }
 const Title: React.FC<TitleProps> = ({title, caption, day, children}) => {
   return (
-    <SectionContainer className="flex-col">
+    <SectionContainer className="flex-col relative">
       <div className="flex justify-between"><h3>{title}</h3>{day && <h3>D-{day}</h3>}</div>
-      <span className="text-caption text-secondary">{caption}</span>
+      <span className="text-caption text-secondary">{caption.split("\n").map((line, i) => (
+        <React.Fragment key={i}>
+          {line}
+          <br />
+        </React.Fragment>
+      ))}</span>
       {children}
     </SectionContainer>
   )
