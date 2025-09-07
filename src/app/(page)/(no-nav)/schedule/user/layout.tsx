@@ -1,11 +1,10 @@
 import React from "react";
 import MainContainer from "@/shared/components/containers/MainContainer";
-import TopBar from "@/shared/components/layout/TopBar";
+import BottomButton from "@/features/schedule/user/components/BottomButton";
 
 export default async function Layout({children}: {children: React.ReactNode}) {
   return (
-    <MainContainer className="h-[calc(100dvh-calc(4rem+env(safe-area-inset-bottom)))]">
-      <TopBar><div className="w-6 h-6" /></TopBar>
+    <MainContainer>
       {children}
     </MainContainer>
   )
