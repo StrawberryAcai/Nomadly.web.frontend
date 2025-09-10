@@ -31,7 +31,7 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       try {
         const res = await axios.post(
-          "https://nomadly-api-2jkcguqk6q-du.a.run.app  /api/auth/reissue",
+          "https://nomadly-api-2jkcguqk6q-du.a.run.app/api/auth/reissue",
           {},
           { withCredentials: true }
         );
