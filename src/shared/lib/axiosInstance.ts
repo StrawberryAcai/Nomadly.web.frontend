@@ -5,8 +5,6 @@ let accessToken: string | null = null;
 
 export const setAccessToken = (token: string) => accessToken = token;
 
-export const getAccessToken = () => accessToken;
-
 const api = axios.create({
   baseURL: "https://nomadly-api-2jkcguqk6q-du.a.run.app",
   withCredentials: true,
