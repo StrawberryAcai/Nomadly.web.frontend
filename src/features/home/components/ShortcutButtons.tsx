@@ -36,7 +36,7 @@ const ShortcutButtons = () => {
         <ShortcutButton href="/explore" caption="현지인과 함께" src={Explore}>지역체험</ShortcutButton>
       </SectionContainer>
       <SectionContainer className="h-[7.75rem] gap-4">
-        <ShortcutButton href="/" caption="비자는 챙겨야죠" src={Visa}>비자정보</ShortcutButton>
+        <ShortcutButton href="https://www.visa.go.kr/openPage.do?MENU_ID=10102" caption="비자는 챙겨야죠" src={Visa}>비자정보</ShortcutButton>
         <ShortcutButton href="/tour" caption="가끔은 혼자서" src={Tour}>관광정보</ShortcutButton>
       </SectionContainer>
     </div>

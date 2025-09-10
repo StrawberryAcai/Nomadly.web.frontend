@@ -8,7 +8,7 @@ export const setAccessToken = (token: string) => accessToken = token;
 export const getAccessToken = () => accessToken;
 
 const api = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://nomadly-api-2jkcguqk6q-du.a.run.app",
   withCredentials: true,
 });
 
@@ -31,7 +31,7 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       try {
         const res = await axios.post(
-          "http://localhost:8000/api/auth/reissue",
+          "https://nomadly-api-2jkcguqk6q-du.a.run.app  /api/auth/reissue",
           {},
           { withCredentials: true }
         );

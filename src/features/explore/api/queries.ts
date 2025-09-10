@@ -14,6 +14,8 @@ async function fetchWeather(lat: number, lon: number): Promise<WeatherResponse> 
   return res.json();
 }
 
+async function fetchLocation(lat: number, lon: number): Promise<> {}
+
 export function useRegionQuery(lat: number | null, lon: number | null) {
   return useQuery({
     queryKey: ["region", lat, lon],

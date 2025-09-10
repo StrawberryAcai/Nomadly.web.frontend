@@ -1,8 +1,10 @@
 import React from 'react';
 import CardContainer from "@/shared/components/containers/CardContainer";
+import {LocationResponse} from "@/features/explore/api/dto";
 
 interface MiniSuggestListProps {
   title: string;
+  data: LocationResponse
 }
 const MiniSuggestList: React.FC<MiniSuggestListProps> = ({title}) => {
   return (
