@@ -4,7 +4,7 @@ import {LocationResponse} from "@/features/explore/api/dto";
 
 interface MiniSuggestListProps {
   title: string;
-  data: LocationResponse
+  //data: LocationResponse
 }
 const MiniSuggestList: React.FC<MiniSuggestListProps> = ({title}) => {
   return (
