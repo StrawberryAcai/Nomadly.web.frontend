@@ -8,17 +8,17 @@ export const getProfile = async (): Promise<ProfileDto> => {
   return res.data;
 };
 
-export const getMePlan = async (): Promise<PlanListResponse> => {
+export const getMePlan = async (): Promise<PlanListResponse[]> => {
   // await api.get<PlanListResponse>("/api/me/plans");
   return dummyPlanData
 }
 
-export const getMeBookmarkedPlan = async (): Promise<PlanListResponse> => {
+export const getMeBookmarkedPlan = async (): Promise<PlanListResponse[]> => {
   // await api.get<PlanListResponse>("/api/me/bookmark/plans");
   return dummyPlanData
 }
 
-export const getMePublicPlan = async (): Promise<PlanListResponse> => {
+export const getMePublicPlan = async (): Promise<PlanListResponse[]> => {
   // await api.get<PlanListResponse>("/api/me/board/plans");
   return dummyPlanData
 }

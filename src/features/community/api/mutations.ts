@@ -7,9 +7,9 @@ export function usePlanAction(plan: PlanItem, type: 'like' | 'bookmark') {
 
   return useMutation({
     mutationFn: () => {
-      const url = `/board/actions/${plan.plan_id}`;
+      const url = `/board/actions/${plan.board_id}`;
       const payload = { type }; // 요청 바디
-      return plan[type === 'like' ? 'is_liked' : 'is_bookmarked']
+      return plan['is_liked']
         ? api.delete(url, { data: payload })
         : api.post(url, payload);
     },
@@ -22,13 +22,13 @@ export function usePlanAction(plan: PlanItem, type: 'like' | 'bookmark') {
         queryClient.setQueryData(
           ['plans'],
           previous.map((p) =>
-            p.plan_id === plan.plan_id
+            p.board_id === plan.board_id
               ? {
                 ...p,
                 is_liked: type === 'like' ? !p.is_liked : p.is_liked,
-                like: type === 'like' ? p.like + (p.is_liked ? -1 : 1) : p.like,
-                is_bookmarked: type === 'bookmark' ? !p.is_bookmarked : p.is_bookmarked,
-                bookmark: type === 'bookmark' ? p.bookmark + (p.is_bookmarked ? -1 : 1) : p.bookmark,
+                like: type === 'like' ? p.liked + (p.is_liked ? -1 : 1) : p.liked,
+                // is_bookmarked: type === 'bookmark' ? !p.is_bookmarked : p.is_bookmarked,
+                // bookmark: type === 'bookmark' ? p.bookmark + (p.is_bookmarked ? -1 : 1) : p.bookmark,
               }
               : p
           )
