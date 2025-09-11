@@ -6,7 +6,8 @@ export default async function Page() {
   const data = await getMeBookmarkedPlan();
   return (
     <MainContainer>
-      {data && <PlanList data={data} />}
+      temp
+      {/*{data && <PlanList data={data} />}*/}
     </MainContainer>
   );
 }
