@@ -13,7 +13,7 @@ const PlanItem: React.FC<PlanItemProps> = (plan) => {
   const bookmarkMutation = usePlanAction(plan, 'bookmark');
 
   return (
-    <Link href={`/plan?plan_id=${plan.plan_id}`} className="px-6 py-2 flex gap-2 justify-between">
+    <Link href={`/plan?plan_id=${plan.board_id}`} className="px-6 py-2 flex gap-2 justify-between">
       <div className="h-[6.75rem] flex flex-col justify-between">
         <div>
           <h4>{plan.title}</h4>
@@ -22,8 +22,8 @@ const PlanItem: React.FC<PlanItemProps> = (plan) => {
           </p>
         </div>
         <div className="flex px-2 gap-4">
-          <LikeButton count={plan.like} isLiked={plan.is_liked} onClick={() => likeMutation.mutate()} />
-          <BookmarkButton count={plan.bookmark} isBookmark={plan.is_bookmarked} onClick={() => bookmarkMutation.mutate()} />
+          <LikeButton count={plan.liked} isLiked={plan.is_liked} onClick={() => likeMutation.mutate()} />
+          {/*<BookmarkButton count={plan.bookmark} isBookmark={plan.is_bookmarked} onClick={() => bookmarkMutation.mutate()} />*/}
         </div>
       </div>
       <Image src={tempUrl} alt="img" width={100} height={100} className="rounded-md min-h-25 max-h-25 min-w-25 max-w-25" />

@@ -1,7 +1,7 @@
 import { PlanListResponse, PlanListRequest, PlanDetailResponse } from "./dto";
 import api from "@/shared/lib/axiosInstance";
 
-export const getPlanList = async (params?: PlanListRequest): Promise<PlanListResponse> => {
+export const getPlanList = async (params?: PlanListRequest): Promise<PlanListResponse[]> => {
   if (params?.keyword) return await api.get(`/api/board?keyword=${params?.keyword}`);
   return await api.get("/api/board");
 };
