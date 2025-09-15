@@ -19,7 +19,7 @@ const NavBar: React.FC = () => {
   return (
     <nav className="px-4 flex justify-around">
       <CustomLink href="/profile">저장된 일정</CustomLink>
-      <CustomLink href="/profile/bookmark/plans">북마크한 일정</CustomLink>
+      <CustomLink href="/profile/like/plans">좋아요한 일정</CustomLink>
       <CustomLink href="/profile/bookmark/places">북마크한 장소</CustomLink>
       <CustomLink href="/profile/community">커뮤니티 활동</CustomLink>
     </nav>
