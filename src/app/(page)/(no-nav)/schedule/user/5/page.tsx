@@ -4,6 +4,8 @@ import ActivenessSection from "@/features/schedule/user/components/ActivenessSec
 import ButtonSelect from "@/features/schedule/user/components/ButtonSelect";
 import BottomButton from "@/features/schedule/user/components/BottomButton";
 import {useTravelStore} from "@/shared/store/useTravelStore";
+import SectionContainer from "@/shared/components/containers/SectionContainer";
+import TextInput from "@/shared/components/inputs/TextInput";
 
 export default function Page() {
   const {budget_preset, companies, prefered_time, setField} = useTravelStore();
@@ -11,6 +13,13 @@ export default function Page() {
     <>
       <Title title="선호하는 활동 스타일을 알려주세요" caption="여행 계획에 반영할게요." />
       <ActivenessSection />
+      <SectionContainer className="flex-col gap-4">
+        <span>예산 선택</span>
+        <div className="flex justify-around h-[2.625rem] gap-2">
+          <TextInput placeholder="예산을 입력하세요." 
+                     onChange={(e)=>{setField("budget_detail", parseInt(e.target.value) * 10000)}}/><span className="text-secondary min-w-fit my-auto">만원</span>
+        </div>
+      </SectionContainer>
       <ButtonSelect title="예산 프리셋"
                     onChange={(item)=>{setField("budget_preset", item)}}
                     items={[{name: "저예산",value: "low"},
