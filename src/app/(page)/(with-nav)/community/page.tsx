@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MainContainer from "@/shared/components/containers/MainContainer";
 import SectionContainer from "@/shared/components/containers/SectionContainer";
 import TextInput from "@/shared/components/inputs/TextInput";
@@ -10,7 +10,16 @@ import { usePlanListQuery } from "@/features/community/hooks/usePlanListQuery";
 
 export default function Page() {
   const [keyword, setKeyword] = useState("");
-  const { data } = usePlanListQuery({ keyword });
+  const [debouncedKeyword, setDebouncedKeyword] = useState("");
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedKeyword(keyword);
+    }, 400); // 400ms 후에만 반영
+    return () => clearTimeout(handler);
+  }, [keyword]);
+
+  const { data } = usePlanListQuery({ keyword: debouncedKeyword });
 
   return (
     <MainContainer>
