@@ -1,4 +1,4 @@
-
+'use client';
 import { useEffect, useState } from "react";
 import MainContainer from "@/shared/components/containers/MainContainer";
 import AdvancedSearchBar from "@/features/explore/components/AdvancedSearchBar";
