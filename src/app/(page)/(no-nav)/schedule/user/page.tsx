@@ -10,27 +10,6 @@ import MainContainer from "@/shared/components/containers/MainContainer";
 export default function Page() {
   const [input, setInput] = useState("");
   const [debouncedInput, setDebouncedInput] = useState("");
-  const [coords, setCoords] = useState<{ longitude: number; latitude: number } | null>(null);
-
-  // 브라우저에서 현재 위치 받아오기
-  useEffect(() => {
-    if (!coords) {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (pos) => {
-            setCoords({
-              longitude: pos.coords.longitude,
-              latitude: pos.coords.latitude,
-            });
-          },
-          (err) => {
-            // 위치 권한 거부 등 fallback 처리 필요시 여기에 작성
-            console.warn("위치 정보를 가져올 수 없습니다.", err);
-          }
-        );
-      }
-    }
-  }, [coords]);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -41,9 +20,9 @@ export default function Page() {
 
   const { data, isLoading, isError } = usePlaceQuery(
     debouncedInput,
-    coords?.longitude ?? 0,
-    coords?.latitude ?? 0,
-    !!debouncedInput && !!coords
+    undefined,
+    undefined,
+    !!debouncedInput
   );
 
   // 예시: 데이터 콘솔 출력
@@ -65,10 +44,36 @@ export default function Page() {
             onChange={e => setInput(e.target.value)}
           />
         </Title>
-        {/* 필요시 아래에 결과 렌더링 */}
-        {/* {isLoading && <div>로딩중...</div>} */}
-        {/* {isError && <div>에러 발생</div>} */}
-        {/* {data && <div>{data.place_name}</div>} */}
+        {/* 결과 렌더링 (Figma 스타일) */}
+        <div className="flex flex-col gap-4 px-4 py-2 w-full">
+          {isLoading && (
+            <div className="text-center text-gray-400 py-4">로딩중...</div>
+          )}
+          {isError && (
+            <div className="text-center text-red-400 py-4">에러 발생</div>
+          )}
+          {data && (
+            <div className="flex gap-3 items-center w-full">
+              <div className="overflow-clip relative shrink-0 w-[100px] h-[100px]">
+                <div
+                  className="absolute inset-0 rounded-[12px] bg-cover bg-center"
+                  style={{ backgroundImage: `url('${data.image}')` }}
+                />
+              </div>
+              <div className="flex flex-col gap-1 items-start justify-center">
+                <div className="font-medium text-[#111] text-[18px] leading-6">
+                  {data.place_name}
+                </div>
+                <div className="font-light text-[#aaa] text-[12px] leading-4">
+                  {data.address}
+                </div>
+                <div className="font-light text-[#aaa] text-[12px] leading-4">
+                  평점: {data.rating} / 북마크: {data.bookmark_cnt} / 거리: {data.distance}m
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </MainContainer>
       <BottomButton isActive={true} />
     </>

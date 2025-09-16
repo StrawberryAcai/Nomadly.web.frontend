@@ -11,8 +11,8 @@ import { PlaceDetailDto } from '../api/dto';
  */
 export function usePlaceQuery(
 	placeName: string,
-	longitude: number,
-	latitude: number,
+	longitude?: number,
+	latitude?: number,
 	enabled: boolean = true
 ): {
 	data?: PlaceDetailDto;
@@ -23,7 +23,7 @@ export function usePlaceQuery(
 	const query = useQuery({
 		queryKey: ['place-detail', placeName, longitude, latitude],
 		queryFn: () => getPlaceDetail(placeName, longitude, latitude),
-		enabled: enabled && !!placeName && !!longitude && !!latitude,
+		enabled: enabled && !!placeName,
 		staleTime: 1000 * 60, // 1분
 	});
 	return {

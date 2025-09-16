@@ -9,12 +9,15 @@ import { PlaceDetailDto } from './dto';
  */
 export const getPlaceDetail = async (
 	placeName: string,
-	longitude: number,
-	latitude: number
+	longitude?: number,
+	latitude?: number
 ): Promise<PlaceDetailDto> => {
 	const encodedName = encodeURIComponent(placeName);
-	const res = await api.get<PlaceDetailDto>(
-		`/api/locations/place/${encodedName}?longitude=${longitude}&latitude=${latitude}`
-	);
+	let url = `/api/locations/place/${encodedName}`;
+	const params: string[] = [];
+	if (longitude !== undefined) params.push(`longitude=${longitude}`);
+	if (latitude !== undefined) params.push(`latitude=${latitude}`);
+	if (params.length > 0) url += `?${params.join("&")}`;
+	const res = await api.get<PlaceDetailDto>(url);
 	return res.data;
 };
