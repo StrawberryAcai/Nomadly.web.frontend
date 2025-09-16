@@ -6,10 +6,12 @@ import TextInput from "@/shared/components/inputs/TextInput";
 import Search from '@public/icons/search.svg';
 import BottomButton from "@/features/schedule/user/components/BottomButton";
 import MainContainer from "@/shared/components/containers/MainContainer";
+import { useTravelStore } from "@/shared/store/useTravelStore";
 
 export default function Page() {
   const [input, setInput] = useState("");
   const [debouncedInput, setDebouncedInput] = useState("");
+  const {destination, setField} = useTravelStore();
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -53,14 +55,18 @@ export default function Page() {
             <div className="text-center text-red-400 py-4">에러 발생</div>
           )}
           {data && (
-            <div className="flex gap-3 items-center w-full">
+            <button
+              type="button"
+              className={`flex gap-3 items-center w-full border rounded-xl p-2 transition-colors ${destination === data.place_name ? "border-primary bg-blue-50" : "border-transparent"}`}
+              onClick={() => setField("destination", data.place_name)}
+            >
               <div className="overflow-clip relative shrink-0 w-[100px] h-[100px]">
                 <div
                   className="absolute inset-0 rounded-[12px] bg-cover bg-center"
                   style={{ backgroundImage: `url('${data.image}')` }}
                 />
               </div>
-              <div className="flex flex-col gap-1 items-start justify-center">
+              <div className="flex flex-col gap-1 items-start justify-center text-left">
                 <div className="font-medium text-[#111] text-[18px] leading-6">
                   {data.place_name}
                 </div>
@@ -71,11 +77,11 @@ export default function Page() {
                   평점: {data.rating} / 북마크: {data.bookmark_cnt} / 거리: {data.distance}m
                 </div>
               </div>
-            </div>
+            </button>
           )}
         </div>
       </MainContainer>
-      <BottomButton isActive={true} />
+      <BottomButton isActive={destination!==""} />
     </>
   );
 }
