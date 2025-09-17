@@ -2,8 +2,12 @@ import axios from "axios";
 import {deleteCookie} from "@/shared/lib/cookieUtil";
 
 let accessToken: string | null = null;
+let user_id: string | null = null;
 
 export const setAccessToken = (token: string) => accessToken = token;
+export const setUserId = (id: string) => user_id = id;
+
+export const getUserId = () => user_id;
 
 const api = axios.create({
   baseURL: "https://nomadly-api-2jkcguqk6q-du.a.run.app",

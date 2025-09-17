@@ -1,10 +1,11 @@
-import api from '@/shared/lib/axiosInstance';
+import api, {setUserId} from '@/shared/lib/axiosInstance';
 import { ProfileDto } from './dto';
 import {PlanListResponse} from "@/features/community/api/dto";
 import {dummyPlanData} from "@/features/community/api/dummy";
 
 export const getProfile = async (): Promise<ProfileDto> => {
   const res = await api.get<ProfileDto>("/api/users/profile");
+  if(res.data) setUserId(res.data.id);
   return res.data;
 };
 

@@ -20,12 +20,13 @@ const SuggestList: React.FC<SuggestListProps> = ({ type, longitude, latitude }) 
         {data && data.items.map((item) => (
           <CardContainer
             key={item.place_id}
+            id={item.place_id}
             isLarge={true}
             title={item.place_name}
             score={item.rating}
             bookmark={item.bookmark_cnt}
             distance={item.distance}
-            isBookmark={item.trend}
+            trend={item.trend}
             url={item.image}
           />
         ))}
