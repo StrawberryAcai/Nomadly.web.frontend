@@ -18,10 +18,6 @@ export default function Home() {
             longitude: pos.coords.longitude,
             latitude: pos.coords.latitude,
           });
-        },
-        (err) => {
-          // fallback 좌표(서울)
-          setCoords({ longitude: 126.9780, latitude: 37.5665 });
         }
       );
     }
