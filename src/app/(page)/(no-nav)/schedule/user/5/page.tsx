@@ -8,7 +8,7 @@ import SectionContainer from "@/shared/components/containers/SectionContainer";
 import TextInput from "@/shared/components/inputs/TextInput";
 
 export default function Page() {
-  const {budget_preset, companies, prefered_time, setField} = useTravelStore();
+  const {budget_preset, companies, preferred_time, setField} = useTravelStore();
   return (
     <>
       <Title title="선호하는 활동 스타일을 알려주세요" caption="여행 계획에 반영할게요." />
@@ -33,13 +33,13 @@ export default function Page() {
                             {name: "가족", value: "family"}]}
       />
       <ButtonSelect title="선호 시간 여행대"
-                    onChange={(item)=>{setField("prefered_time", item)}}
+                    onChange={(item)=>{setField("preferred_time", item)}}
                     items={[{name: "아침",value: "morning"},
                             {name: "저녁", value: "evening"}]}
       />
       <BottomButton isActive={(budget_preset!=="")
         &&(companies!=="")
-        &&(prefered_time!=="")} text={"일정 생성하기"} />
+        &&(preferred_time!=="")} text={"일정 생성하기"} />
     </>
   )
 }

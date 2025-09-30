@@ -10,7 +10,7 @@ export interface TravelState {
   budget_detail: number;
   budget_preset: string;
   companies: string;
-  prefered_time: string;
+  preferred_time: string;
   work: string;
   bookmarked: string[];
 }
@@ -38,7 +38,7 @@ export const useTravelStore = create<TravelStore>((set) => ({
   budget_detail: 0,
   budget_preset: "low",
   companies: "",
-  prefered_time: "",
+  preferred_time: "",
   work: "",
   bookmarked: [],
 
@@ -65,7 +65,7 @@ export const useTravelStore = create<TravelStore>((set) => ({
       budget_detail: 0,
       budget_preset: "low",
       companies: "",
-      prefered_time: "",
+      preferred_time: "",
       work: "",
       bookmarked: [],
     }),
