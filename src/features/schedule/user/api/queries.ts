@@ -17,7 +17,7 @@ export type PlanResponse = {
 
 export async function getPlan(store: TravelState): Promise<PlanResponse> {
   if(store.bookmarked.length === 0) store.bookmarked = [store.destination];
-  const res = await api.post<PlanResponse>("/api/plan", store);
+  const res = await api.post<PlanResponse>("/api/plan/", store);
   return res.data;
 }
 /**
