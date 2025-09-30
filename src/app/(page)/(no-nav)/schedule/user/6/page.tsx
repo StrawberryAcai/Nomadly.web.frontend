@@ -1,7 +1,31 @@
 "use client";
 import { useTravelStore } from "@/shared/store/useTravelStore";
 import { usePlanQuery } from "@/features/schedule/user/hooks/usePlanQuery";
-import { PlanItem, PlanResponse } from "@/features/schedule/user/api/queries";
+import SectionContainer from "@/shared/components/containers/SectionContainer";
+import ToggleSpan from "@/features/plan/components/ToggleSpan";
+
+function formatTo12Hour(dateStr: string): string {
+  const isoStr = dateStr.replace(/-/g, (m, i) => (i < 10 ? m : ":"))
+    .replace(":", "T")
+    .replace(":", ":") + ":00";
+
+  const date = new Date(
+    dateStr.replace(/-/g, (m, i) => (i < 10 ? m : ":"))
+      .replace(":", "T")
+      .replace(":", ":") + ":00"
+  );
+
+  let hours = date.getHours();
+  const minutes = date.getMinutes();
+  const ampm = hours >= 12 ? "오후" : "오전";
+
+  hours = hours % 12;
+  hours = hours ? hours : 12; // 0시는 12로 표시
+
+  const minuteStr = minutes.toString().padStart(2, "0");
+
+  return `${ampm} ${hours}:${minuteStr}`;
+}
 
 export default function Page() {
 	const store = useTravelStore();
@@ -21,51 +45,34 @@ export default function Page() {
 					</div>
 				</header>
 
-				<div className="space-y-8">
-					{data.plan.map((day, i) => (
-						<div key={i} className="bg-white rounded-2xl shadow-md overflow-hidden">
-							<div className="bg-indigo-50 px-6 py-4">
-								<h2 className="text-xl font-semibold text-indigo-700">Day {i + 1}</h2>
-							</div>
-
-							<div className="divide-y divide-gray-100">
-								{day.map((item, j) => (
-									<div key={j} className="px-6 py-5 flex items-start gap-6">
-										<div className="w-20 shrink-0">
-											<div className="text-indigo-600 font-medium">{item.time}</div>
-										</div>
-
-										<div className="flex-1">
-											<div className="font-medium text-gray-900 mb-1">{item.todo}</div>
-											<div className="text-gray-500 text-sm flex items-center gap-1">
-												<svg
-													className="w-4 h-4"
-													fill="none"
-													viewBox="0 0 24 24"
-													stroke="currentColor"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														strokeWidth={2}
-														d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-													/>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														strokeWidth={2}
-														d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-													/>
-												</svg>
-												{item.place}
-											</div>
-										</div>
-									</div>
-								))}
-							</div>
-						</div>
-					))}
-				</div>
+        <SectionContainer className="flex-col">
+          <div className="flex flex-col">
+            {data.plan.map((plans, index1) => (
+              <ToggleSpan key={index1} day={index1+1}>
+                <section className="flex flex-col gap-5">
+                  {plans.map((item, index2)=> {
+                    const globalIndex = data.plan
+                        .slice(0, index1)
+                        .reduce((acc, cur) => acc + cur.length, 0)
+                      + index2 + 1;
+                    return (
+                      <div key={index2} className="flex gap-3">
+                        <span className="w-18">{formatTo12Hour(item.time)}</span>
+                        <div className="w-6 h-6 rounded-full bg-primary text-white flex justify-center items-center">
+                          {globalIndex}
+                        </div>
+                        <div className="border-1 flex-1 border-outline flex flex-col px-6 py-4 rounded-2xl">
+                          <span className="text-body-md">{item.todo}</span>
+                          <span className="text-caption text-secondary">{item.place}</span>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </section>
+              </ToggleSpan>
+            ))}
+          </div>
+        </SectionContainer>
 			</section>
 		</main>
 	);
