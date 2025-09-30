@@ -8,5 +8,6 @@ export function usePlaceSuggestQuery(params: PlaceSuggestRequest, enabled: boole
     queryFn: () => getPlaceSuggest(params),
     enabled,
     staleTime: 1000 * 60, // 1분
+    retry: false
   });
 }

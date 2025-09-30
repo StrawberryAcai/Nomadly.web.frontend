@@ -8,5 +8,6 @@ export function usePlanQuery(store: TravelState) {
     queryFn: () => getPlan(store),
     enabled: !!store,
     staleTime: 1000 * 60,
+    retry: false
   });
 }

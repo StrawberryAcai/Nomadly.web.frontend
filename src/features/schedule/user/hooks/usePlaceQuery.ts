@@ -25,6 +25,7 @@ export function usePlaceQuery(
 		queryFn: () => getPlaceDetail(placeName, longitude, latitude),
 		enabled: enabled && !!placeName,
 		staleTime: 1000 * 60, // 1분
+    retry: false
 	});
 	return {
 		data: query.data,

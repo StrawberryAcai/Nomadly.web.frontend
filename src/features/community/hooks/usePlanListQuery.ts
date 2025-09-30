@@ -8,5 +8,6 @@ export const usePlanListQuery = (params?: PlanListRequest) => {
     queryKey: ["planList", params?.keyword],
     queryFn: () => getPlanList(params),
     staleTime: 1000 * 60,
+    retry: false
   });
 };
