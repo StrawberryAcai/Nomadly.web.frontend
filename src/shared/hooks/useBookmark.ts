@@ -35,9 +35,9 @@ export function useBookmark(id: string) {
                 user_id: getUserId() ?? '',
             };
             if (isBookmarked) {
-                return api.delete(`/api/locations/bookmark`, { data: payload });
+                return api.delete(`/api/locations/bookmark/`, { data: payload });
             } else {
-                return api.post(`/api/locations/bookmark`, payload);
+                return api.post(`/api/locations/bookmark/`, payload);
             }
         },
         onSuccess: (_, isBookmarked) => {
