@@ -17,10 +17,11 @@ export function useBookmark(id: string) {
     useEffect(() => {
         const fetchBookmark = async () => {
             try {
-                const res = await api.get<BookmarkResponse>(
-                    `/api/locations/bookmark/${id}/${getUserId() ?? ''}`
-                );
-                setBookmarkData(res.data);
+              if (getUserId() === null) throw new Error();
+              const res = await api.get<BookmarkResponse>(
+                `/api/locations/bookmark/${id}/getUserId()`
+              );
+              setBookmarkData(res.data);
             } catch {
                 setBookmarkData(null);
             }
