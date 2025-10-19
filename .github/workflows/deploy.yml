@@ -47,4 +47,4 @@ jobs:
           USERNAME: ${{ secrets.SSH_USERNAME }}
           HOST: ${{ secrets.SSH_HOST }}
         run: |
-          ssh $USERNAME@$HOST 'cd /home/deploy/Nomadly.web.frontend && bash ./deploy.sh'
+          ssh $USERNAME@$HOST 'cd ~/Nomadly && bash ./deploy.sh'
