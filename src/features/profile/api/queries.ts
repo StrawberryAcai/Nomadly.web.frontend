@@ -1,7 +1,7 @@
 import api, {setUserId} from '@/shared/lib/axiosInstance';
-import { ProfileDto } from './dto';
+import { ProfileDto, MyPlan } from './dto';
 import {BookmarkResponse, PlanListResponse} from "@/features/community/api/dto";
-import {dummyPlanData, dummyBookmarkData} from "@/features/community/api/dummy";
+import {dummyPlanData, dummyMyPlanData, dummyBookmarkData} from "@/features/community/api/dummy";
 
 
 export const getProfile = async (): Promise<ProfileDto> => {
@@ -10,14 +10,14 @@ export const getProfile = async (): Promise<ProfileDto> => {
   return res.data;
 };
 
-export const getMePlan = async (): Promise<PlanListResponse[]> => {
-  // await api.get<PlanListResponse>("/api/me/plans");
-  return dummyPlanData
+export const getMyPlan = async (): Promise<MyPlan[]> => {
+  const res = await api.get<MyPlan[]>("/api/me/plans");
+  return res.data;
 }
 
 export const getMeBookmarkedPlan = async (): Promise<BookmarkResponse> => {
-  const res = await api.get<BookmarkResponse>("/api/me/bookmark/plans");
-  return res.data;
+  // await api.get<BookmarkResponse>("/api/me/bookmark/plans");
+  return dummyBookmarkData
 }
 
 export const getMePublicPlan = async (): Promise<PlanListResponse[]> => {

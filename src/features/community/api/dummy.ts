@@ -1,3 +1,4 @@
+import { MyPlan } from "@/features/profile/api/dto";
 import { BookmarkResponse, PlanDetailResponse, PlanListResponse } from "./dto";
 
 export const dummyPlanData: PlanListResponse[] = [
@@ -75,5 +76,47 @@ export const dummyBookmarkData: BookmarkResponse = [
     address: "부산광역시 강서구 봉죽길91번길 65-37 (봉림동)",
     overall_bookmark: 1,
     overall_rating: 0,
+  },
+];
+
+export const dummyMyPlanData: MyPlan[] = [
+  {
+    plan_id: "a1f3d5b2-9c21-4f67-8b5d-1f3a6f7c2c11",
+    start_time: "2025-10-25T09:00:00Z",
+    end_time: "2025-10-25T18:30:00Z",
+    plan: [
+      { todo: "호텔에서 출발", place: "신라호텔", time: "2025-10-25T09:00:00Z" },
+      { todo: "아침 식사", place: "이태원 브런치 카페", time: "2025-10-25T09:30:00Z" },
+      { todo: "전시회 관람", place: "디뮤지엄", time: "2025-10-25T11:00:00Z" },
+      { todo: "점심 식사", place: "삼청동 수제버거집", time: "2025-10-25T13:00:00Z" },
+      { todo: "북악산 산책", place: "북악산 둘레길", time: "2025-10-25T15:30:00Z" },
+      { todo: "저녁 및 귀가", place: "광화문 근처 식당", time: "2025-10-25T18:00:00Z" },
+    ],
+  },
+  {
+    plan_id: "b7c1f8d3-2451-4b2d-9a77-9d37f1e2c2f9",
+    start_time: "2025-10-26T08:30:00Z",
+    end_time: "2025-10-26T20:00:00Z",
+    plan: [
+      { todo: "출발", place: "홍대입구역", time: "2025-10-26T08:30:00Z" },
+      { todo: "조식", place: "홍대 브런치카페", time: "2025-10-26T09:00:00Z" },
+      { todo: "드라이브", place: "양평 두물머리", time: "2025-10-26T11:00:00Z" },
+      { todo: "점심", place: "양평 고기집", time: "2025-10-26T13:30:00Z" },
+      { todo: "카페 탐방", place: "양평 리버뷰 카페", time: "2025-10-26T15:00:00Z" },
+      { todo: "서울 복귀", place: "홍대입구역", time: "2025-10-26T20:00:00Z" },
+    ],
+  },
+  {
+    plan_id: "d2a3e6b5-8f41-4e73-bc67-1c83e2a1b456",
+    start_time: "2025-10-27T10:00:00Z",
+    end_time: "2025-10-27T16:30:00Z",
+    plan: [
+      { todo: "출발", place: "서울역", time: "2025-10-27T10:00:00Z" },
+      { todo: "KTX 이동", place: "부산역 도착", time: "2025-10-27T12:30:00Z" },
+      { todo: "점심", place: "광안리 해물탕집", time: "2025-10-27T13:00:00Z" },
+      { todo: "해변 산책", place: "광안리 해수욕장", time: "2025-10-27T14:00:00Z" },
+      { todo: "카페", place: "광안리 오션뷰 카페", time: "2025-10-27T15:00:00Z" },
+      { todo: "호텔 체크인", place: "파라다이스호텔 부산", time: "2025-10-27T16:30:00Z" },
+    ],
   },
 ];
