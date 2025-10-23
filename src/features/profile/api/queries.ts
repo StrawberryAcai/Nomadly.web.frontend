@@ -10,7 +10,7 @@ export const getProfile = async (): Promise<ProfileDto> => {
   return res.data;
 };
 
-export const getMyPlan = async (): Promise<MyPlan[]> => {
+export const getMePlan = async (): Promise<MyPlan[]> => {
   const res = await api.get<MyPlan[]>("/api/me/plans");
   return res.data;
 }

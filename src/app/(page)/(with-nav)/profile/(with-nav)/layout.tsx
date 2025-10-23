@@ -17,12 +17,8 @@ export default function Layout({children}: {children: React.ReactNode}) {
         <Link href="/profile/settings"><Image src={Setting} alt="setting" /></Link>
       </TopBar>
       <ProfileCard />
-      {data && 
-      <>
-        <NavBar />
-        {children}
-      </>
-      }
+      <NavBar />
+      {children}
     </MainContainer>
   )
 }
