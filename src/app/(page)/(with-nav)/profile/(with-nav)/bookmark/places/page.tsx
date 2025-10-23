@@ -1,13 +1,15 @@
 import MainContainer from "@/shared/components/containers/MainContainer";
-import {useEffect} from "react";
-import api from "@/shared/lib/axiosInstance";
 import { getMeBookmarkedPlan } from "@/features/profile/api/queries";
+import BookmarkCard from "@/features/profile/components/BookmarkCard";
 
 export default async function Page() {
   const data = await getMeBookmarkedPlan();
+  console.log(data);
   return (
     <MainContainer>
-      2
+      {Array.isArray(data) ? data.map((bookmark, idx)=>(
+        <BookmarkCard key={idx} {...bookmark} />
+      )):<></>}
     </MainContainer>
   );
 }

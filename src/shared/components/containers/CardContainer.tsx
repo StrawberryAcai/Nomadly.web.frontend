@@ -9,10 +9,11 @@ interface CardContainerProps {
     score: number;
     bookmark: number;
     id: string;
-    distance: number;
-    url: string;
+    distance?: number;
+    url?: string;
     isLarge?: boolean;
-    trend: boolean;
+    isBookmark?: boolean;
+    trend?: boolean;
 }
 
 const CardContainer: React.FC<CardContainerProps> = ({
@@ -24,12 +25,13 @@ const CardContainer: React.FC<CardContainerProps> = ({
                                                          url,
                                                          isLarge,
                                                          trend,
+                                                         isBookmark
                                                      }) => {
     const { bookmarkData, handleBookmarkClick } = useBookmark(id);
     const [bookmarked, setBookmarked] = useState<boolean|undefined>(bookmarkData?.is_bookmarked);
     return (
         <article
-            className={(isLarge ? "aspect-[3/4] w-[12.5rem]" : "aspect-square w-[9.375rem]") +
+            className={(isLarge ? "aspect-[3/4] w-[12.5rem]" : !isBookmark? "aspect-square w-[9.375rem]": "aspect-[16/9] w-full") +
                 " bg-black bg-center bg-cover p-3 flex flex-col justify-between rounded-xl flex-none"}
             style={{
                 backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${url})`,
@@ -47,7 +49,7 @@ const CardContainer: React.FC<CardContainerProps> = ({
                     isBookmark={bookmarkData?.is_bookmarked ?? false}
                     onClick={handleBookmarkClick}
                 />
-                <DistanceContainer distance={distance} />
+                {distance && <DistanceContainer distance={distance} /> }
             </footer>
         </article>
     );
