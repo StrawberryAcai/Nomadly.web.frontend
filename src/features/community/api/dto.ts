@@ -33,3 +33,13 @@ export interface PlanDetailResponse extends PlanItem {
     }[];
   };
 }
+
+export interface BookmarkItem {
+  place_id: string;
+  name: string;
+  address: string;
+  overall_bookmark: number;
+  overall_rating: number;
+}
+
+export type BookmarkResponse = BookmarkItem[]
