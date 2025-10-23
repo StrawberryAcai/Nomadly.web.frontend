@@ -6,7 +6,7 @@ export default async function Page() {
   const data = await getMeBookmarkedPlan();
   console.log(data);
   return (
-    <MainContainer className="px-4 ">
+    <MainContainer className="px-4 pb-4">
       {Array.isArray(data) ? data.map((bookmark, idx)=>(
         <BookmarkCard key={idx} {...bookmark} />
       )):<></>}
