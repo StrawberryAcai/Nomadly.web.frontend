@@ -11,7 +11,7 @@ function formatTo12Hour(timeStr: string): string {
   const ampm = hours >= 12 ? "오후" : "오전";
   hours = hours % 12 || 12;
   const minuteStr = minutes.toString().padStart(2, "0");
-  return `${ampm} ${hours}:${minuteStr}`;
+  return `${timeStr.slice(2,4)}.${timeStr.slice(5,7)}.${timeStr.slice(8,10)}. ${ampm} ${hours}:${minuteStr}`;
 }
 
 export default function MyPlanToggle({ plan }: { plan: MyPlan }) {
@@ -36,11 +36,12 @@ export default function MyPlanToggle({ plan }: { plan: MyPlan }) {
 
       {open && (
         <div className="bg-gray-50 border-t border-gray-200 px-6 py-4 h-100">
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-3 pb-4">
             {plan.plan.map((item, idx) => (
               <li key={idx} className="flex items-start gap-3">
                 <span className="text-sm w-20 text-gray-600">
-                  {formatTo12Hour(item.time)}
+                  {formatTo12Hour(item.time).slice(0,9)}<br />
+                  {formatTo12Hour(item.time).slice(9,18)}
                 </span>
                 <div className="flex-1 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
                   <div className="font-medium">{item.todo}</div>
