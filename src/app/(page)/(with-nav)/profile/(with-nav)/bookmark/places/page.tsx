@@ -29,16 +29,6 @@ export default function Page() {
     );
   }
 
-  if (!Array.isArray(data) || data.length === 0) {
-    return (
-      <MainContainer className="px-4 pb-4">
-        <p className="text-gray-400 text-center mt-10">
-          북마크한 여행이 없습니다.
-        </p>
-      </MainContainer>
-    );
-  }
-
   return (
     <MainContainer className="px-4 pb-4">
       {data.map((bookmark, idx) => (
