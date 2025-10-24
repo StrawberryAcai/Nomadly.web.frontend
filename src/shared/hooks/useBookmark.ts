@@ -19,7 +19,7 @@ export function useBookmark(id: string) {
             try {
               if (getUserId() === null) throw new Error();
               const res = await api.get<BookmarkResponse>(
-                `/api/locations/bookmark/${id}/getUserId()`
+                `/api/locations/bookmark/${id}/${getUserId()}`
               );
               setBookmarkData(res.data);
             } catch {
