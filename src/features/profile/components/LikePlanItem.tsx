@@ -1,14 +1,13 @@
 'use client'
 import React from 'react';
 import LikeButton from '@/shared/components/inputs/LikeButton';
-import { PlanItem as PlanItemProps } from '@/features/community/api/dto';
+import { MePlanListResponse, PlanItem as PlanItemProps } from '@/features/community/api/dto';
 import { useLikeAction } from '@/features/community/api/mutations';
 import Image from "next/image";
 import Link from "next/link";
+import Like from '@public/icons/button/like/like.svg';
 
-const PlanItem: React.FC<PlanItemProps> = (plan) => {
-  const likeMutation = useLikeAction(plan);
-
+const LikePlanItem: React.FC<MePlanListResponse> = (plan) => {
   return (
     <Link href={`/plan?plan_id=${plan.board_id}`} className="px-6 py-2 flex gap-2 justify-between">
       <div className="h-[6.75rem] flex flex-col justify-between">
@@ -19,11 +18,14 @@ const PlanItem: React.FC<PlanItemProps> = (plan) => {
           </p>
         </div>
         <div className="flex px-2 gap-4">
-          <LikeButton count={plan.liked} isLiked={plan.is_liked} onClick={() => likeMutation.mutate()} />
+          <div className="h-8 flex flex-row gap-1 py-2 items-center">
+            <Image src={Like} alt="Bookmark icon" />
+            <span className={`text-caption text-secondary`}>{plan.likes}</span>
+          </div>
         </div>
       </div>
     </Link>
   );
 };
 
-export default PlanItem;
+export default LikePlanItem;

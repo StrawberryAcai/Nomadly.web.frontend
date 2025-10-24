@@ -1,18 +1,43 @@
 "use client";
-import {getMeBookmarkedPlan} from "@/features/profile/api/queries";
+import LikePlanItem from "@/features/profile/components/LikePlanItem";
+import { useMyLikeBoardQuery } from "@/features/profile/hooks/useMyLikeBoardQuery";
 import MainContainer from "@/shared/components/containers/MainContainer";
-import PlanList from "@/shared/components/plan/PlanList";
-import api from "@/shared/lib/axiosInstance";
-import { useEffect } from "react";
 
 export default function Page() {
-  useEffect(()=> {
-    console.log(api.get("/api/me/like/board"));
-  })
+  const {data, isLoading, isError} = useMyLikeBoardQuery();
+  if (isLoading) {
+    return (
+      <MainContainer className="px-4 pb-4">
+        <p className="text-gray-500 text-center mt-10">불러오는 중...</p>
+      </MainContainer>
+    );
+  }
+
+  if (isError) {
+    return (
+      <MainContainer className="px-4 pb-4">
+        <p className="text-red-500 text-center mt-10">
+          커뮤니티 활동을 불러오지 못했습니다.
+        </p>
+      </MainContainer>
+    );
+  }
+
+  if (!Array.isArray(data) || data.length === 0) {
+    return (
+      <MainContainer className="px-4 pb-4">
+        <p className="text-gray-400 text-center mt-10">
+          커뮤니티 활동 내역이 없습니다..
+        </p>
+      </MainContainer>
+    );
+  }
+
   return (
     <MainContainer>
-      temp
-      {/*{data && <PlanList data={data} />}*/}
+      <section className="flex flex-col gap-4">
+        {data?.map((plan) => <LikePlanItem key={plan.board_id} {...plan} />)}
+      </section>
     </MainContainer>
   );
 }
