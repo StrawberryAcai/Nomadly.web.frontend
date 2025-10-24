@@ -48,7 +48,7 @@ const CardContainer: React.FC<CardContainerProps> = ({
             </header>
             <footer className="flex flex-row justify-between">
                 <BookmarkButton
-                    count={bookmark+((bookmarked!==undefined)&&(bookmarked!==bookmarkData?.is_bookmarked)?1:0)}
+                    count={bookmark+((bookmarked!==undefined)&&(bookmarked!==bookmarkData?.is_bookmarked)?(bookmarked)?-1:1:0)}
                     isBookmark={!!bookmarkData?.is_bookmarked}
                     onClick={handleBookmarkClick}
                 />
