@@ -55,7 +55,8 @@ export const dummyPlanDetailData: PlanDetailResponse = {
   },
 };
 
-export const dummyBookmarkData: BookmarkResponse = [
+export const dummyBookmarkData: BookmarkResponse = {
+    plans:[
   {
     place_id: "f56490a4-f19d-43aa-aabe-51f324a4000a",
     name: "부산자연곤충마을",
@@ -77,7 +78,7 @@ export const dummyBookmarkData: BookmarkResponse = [
     overall_bookmark: 1,
     overall_rating: 0,
   },
-];
+]};
 
 export const dummyMyPlanData: MyPlan[] = [
   {
