@@ -16,6 +16,13 @@ export interface PlanListResponse {
   liked: number;
 }
 
+export interface MePlanListResponse {
+  board_id: string;
+  content: string;
+  likes: number;
+  title: string;
+}
+
 export interface PlanDetailResponse extends PlanItem {
   avg_rate: number;
   comment: number;

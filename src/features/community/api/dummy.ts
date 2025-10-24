@@ -1,5 +1,5 @@
 import { MyPlan } from "@/features/profile/api/dto";
-import { BookmarkResponse, PlanDetailResponse, PlanListResponse } from "./dto";
+import { BookmarkResponse, MePlanListResponse, PlanDetailResponse, PlanListResponse } from "./dto";
 
 export const dummyPlanData: PlanListResponse[] = [
   {
@@ -120,3 +120,12 @@ export const dummyMyPlanData: MyPlan[] = [
     ],
   },
 ];
+
+export const dummyMeBoardData: MePlanListResponse[] = [
+    {
+        "board_id": "550e8400-e29b-41d4-a716-446655440004",
+        "title": "친구와의 만남",
+        "content": "오랜만에 친구와 만나서 강남에서 점심 먹고 영화 볼 예정입니다. 기대돼요!",
+        "likes": 1
+    }
+]
