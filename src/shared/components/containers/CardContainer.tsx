@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import BookmarkButton from "@/shared/components/inputs/BookmarkButton";
 import DistanceContainer from "@/shared/components/containers/DistanceContainer";
 import { useBookmark } from '@/shared/hooks/useBookmark';
@@ -28,7 +28,6 @@ const CardContainer: React.FC<CardContainerProps> = ({
                                                          isBookmark
                                                      }) => {
     const { bookmarkData, handleBookmarkClick } = useBookmark(id);
-    const [bookmarked, setBookmarked] = useState<boolean|undefined>(bookmarkData?.is_bookmarked);
     return (
         <article
             className={(isLarge ? "aspect-[3/4] w-[12.5rem]" : !isBookmark? "aspect-square w-[9.375rem]": "aspect-[16/9] w-full") +
@@ -45,8 +44,8 @@ const CardContainer: React.FC<CardContainerProps> = ({
             </header>
             <footer className="flex flex-row justify-between">
                 <BookmarkButton
-                    count={bookmark+((bookmarked!==undefined)&&(bookmarked!==bookmarkData?.is_bookmarked)?1:0)}
-                    isBookmark={bookmarkData?.is_bookmarked?true:false}
+                    count={bookmark+((isBookmark!==bookmarkData?.is_bookmarked)?1:0)}
+                    isBookmark={!!bookmarkData?.is_bookmarked}
                     onClick={handleBookmarkClick}
                 />
                 {distance && <DistanceContainer distance={distance} /> }
