@@ -1,5 +1,6 @@
 import axios from "axios";
 import {deleteCookie} from "@/shared/lib/cookieUtil";
+import { ProfileDto } from "@/features/profile/api/dto";
 
 let accessToken: string | null = null;
 let user_id: string | null = null;
@@ -7,7 +8,13 @@ let user_id: string | null = null;
 export const setAccessToken = (token: string) => accessToken = token;
 export const setUserId = (id: string) => user_id = id;
 
-export const getUserId = () => user_id;
+export const getUserId = async () => {
+  if(user_id === null) {
+    const res = await api.get<ProfileDto>("/api/users/profile");
+    if(res.data) setUserId(res.data.id);
+  }
+  return user_id
+};
 
 const api = axios.create({
   baseURL: "https://nomadly-api-2jkcguqk6q-du.a.run.app",
