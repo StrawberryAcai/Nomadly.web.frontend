@@ -49,4 +49,6 @@ export interface BookmarkItem {
   overall_rating: number;
 }
 
-export type BookmarkResponse = BookmarkItem[]
+export interface BookmarkResponse {
+    plans: BookmarkItem[]
+}
