@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { MyPlan } from "../api/dto";
+import VisibilityToggle from "./VisibilityToggle";
 
 function formatTo12Hour(timeStr: string): string {
   const date = new Date(timeStr);
@@ -22,12 +23,12 @@ export default function MyPlanToggle({ plan }: { plan: MyPlan }) {
   return (
     <div className="border border-gray-200 rounded-2xl overflow-hidden mb-4 shadow-sm overflow-y-auto min-h-19 box-border">
       <button
-        className="w-full flex justify-between items-center px-6 py-4 bg-white hover:bg-gray-50 transition sticky top-0"
+        className="w-full flex justify-between items-center px-6 py-4 bg-white hover:bg-gray-50 transition sticky top-0 gap-3"
         onClick={() => setOpen(!open)}
       >
         <div className="flex flex-col text-left">
           <span className="text-gray-800 font-semibold">
-            {formatTo12Hour(plan.start_time)} ~ {formatTo12Hour(plan.end_time)}
+            {formatTo12Hour(plan.start_time)} ~<br /> {formatTo12Hour(plan.end_time)}
           </span>
           <span className="text-sm text-gray-500">{firstPlace}</span>
         </div>
@@ -36,6 +37,7 @@ export default function MyPlanToggle({ plan }: { plan: MyPlan }) {
 
       {open && (
         <div className="bg-gray-50 border-t border-gray-200 px-6 py-4 h-100">
+          <VisibilityToggle board_id={plan.plan_id} />
           <ul className="flex flex-col gap-3 pb-4">
             {plan.plan.map((item, idx) => (
               <li key={idx} className="flex items-start gap-3">
