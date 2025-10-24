@@ -31,7 +31,7 @@ export default function Page() {
 
   return (
     <MainContainer className="px-4 pb-4">
-      {data.map((bookmark, idx) => (
+      {data.plans.map((bookmark, idx) => (
         <BookmarkCard key={idx} {...bookmark} />
       ))}
     </MainContainer>
