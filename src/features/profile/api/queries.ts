@@ -16,7 +16,6 @@ export const getMePlan = async (): Promise<MyPlan[]> => {
 }
 
 export const getMeBookmarkedPlan = async (): Promise<BookmarkResponse> => {
-    return dummyBookmarkData;
   const res = await api.get<BookmarkResponse>("/api/me/bookmark/place");
   console.log(res.data);
   return res.data;
